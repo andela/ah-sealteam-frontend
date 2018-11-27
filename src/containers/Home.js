@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../assets/images/logo.svg';
 import '../assets/styles/App.scss';
+import { connect } from "react-redux";
 
 class App extends Component {
   render() {
@@ -23,4 +24,7 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  ...state
+});
+export default connect()(App);
