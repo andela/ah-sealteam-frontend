@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/andela/ah-sealteam-frontend.svg?branch=develop)](https://travis-ci.org/andela/ah-sealteam-frontend)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/3306f79c90df8f5cc736/test_coverage)](https://codeclimate.com/github/andela/ah-sealteam-frontend/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3306f79c90df8f5cc736/maintainability)](https://codeclimate.com/github/andela/ah-sealteam-frontend/maintainability)
+
 This repository holds the frontend for Authors Haven.
 @ SEAL_TEAM
 
