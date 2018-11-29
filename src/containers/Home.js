@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './assets/styles/App.scss';
+import logo from '../assets/images/logo.svg';
+import '../assets/styles/App.scss';
 
 class App extends Component {
   render() {
@@ -8,9 +8,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Authors Haven
-          </p>
+          <p>Authors Haven</p>
           <a
             className="App-link"
             href="https://reactjs.org"
