@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock';
-import configureStore from '../store';
+import configureStore from '..';
 
 describe('store', () => {
   afterEach(() => {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import logo from '../assets/images/logo.svg';
 import '../assets/styles/App.scss';
+import { connect } from 'react-redux';
 
 class App extends Component {
-
   render() {
     return (
       <div className="App">
