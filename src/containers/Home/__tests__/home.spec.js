@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from '../Home';
+import Home from '../index';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
