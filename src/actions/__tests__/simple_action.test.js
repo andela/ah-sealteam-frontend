@@ -1,6 +1,5 @@
 import { simpleAction } from '../simple_action';
 import fetchMock from 'fetch-mock';
-
 describe('simple actions', () => {
   afterEach(() => {
     fetchMock.reset();
