@@ -7,6 +7,7 @@ import SignIn from '../containers/Signin';
 import AllArticles from '../containers/AllArticle';
 import ErrorHandler from '../components/ErrorHandler';
 import LogoutView from '../containers/Logout';
+import ResetPassword from '../containers/ResetPassword';
 
 const AppRoutes = () => {
     return (
@@ -23,10 +24,12 @@ const AppRoutes = () => {
                         <Route exact path="/login" component={SignIn} />
                         <Route exact path="/signup" component={SignUp} />
                         <Route exact path="/logout" component={LogoutView} />
+                        <Route exact path="/resetpassword" component={ResetPassword} />
                     </Switch>
                 </div>
             </Router>
         </BrowserRouter>
     );
-};
+}
+
 export default AppRoutes;
