@@ -419,12 +419,12 @@ input.input {
 }
 
 .myForm {
-  width: 50%;
+  //width: 50%;
   padding-top: 36px;
   padding-left: 45px;
   padding-right: 45px;
 }
- 
+
 .form-title {
   text-transform: uppercase;
   font-size: 25px;
@@ -586,24 +586,24 @@ width: 100%;
 height: 30px;
 padding: 0;
 margin-bottom: 25px;
-font-size: 18px; 
+font-size: 18px;
 font-family: Verdana, Geneva, Tahoma, sans-serif;
-&::-webkit-input-placeholder { 
+&::-webkit-input-placeholder {
   font-size: 13px;
   color: #333;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-&::-moz-placeholder { 
+&::-moz-placeholder {
   font-size: 13px;
   color: #333;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-&:-ms-input-placeholder { 
+&:-ms-input-placeholder {
   font-size: 13px;
   color: #333;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-&:-moz-placeholder { 
+&:-moz-placeholder {
   font-size: 13px;
   color: #333;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -612,7 +612,7 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 .loader {
 	height : 8px;
-	width  : 36px; /* (6 * <margin: 2px>) + (3 * <width: 8px>) */ 
+	width  : 36px; /* (6 * <margin: 2px>) + (3 * <width: 8px>) */
 }
 
 .divLoader{
@@ -643,4 +643,35 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
 .error{
   margin-top: 50px;
   margin: 0 auto;
+}
+/* Text between <hr> tag */
+hr{
+    margin-top: 2rem !important;
+    align: center;
+}
+hr.style-four {
+    padding: 0 45px;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+    width: 60%;
+    margin-left: 30px;
+}
+hr.style-four:after {
+    content: "Or login with";
+    display: inline-block;
+    position: relative;
+    top: -0.8em;
+    font-size: 1em;
+    padding: 0 0.25em;
+    background: white;
+}
+.social-form{
+    width:50%;
+}
+@media (max-width: 767px) {
+    .social-form{
+        width: 100%;
+    }
 }

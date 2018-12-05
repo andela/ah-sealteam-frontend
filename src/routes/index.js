@@ -6,21 +6,27 @@ import { history } from '../history';
 import SignIn from '../containers/Signin';
 import AllArticles from '../containers/AllArticle';
 import ErrorHandler from '../components/ErrorHandler';
+import LogoutView from '../containers/Logout';
 
 const AppRoutes = () => {
-  return (
-    <BrowserRouter>
-      <Router history={history}>
-        <div>
-          <Switch>
-            <Route exact path="/" component={AllArticles} />
-            <Route exact path="/server-error" component={ErrorHandler} />
-            <Route exact path="/login" component={SignIn} />
-            <Route exact path="/signup" component={SignUp} />
-          </Switch>
-        </div>
-      </Router>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Router history={history}>
+                <div>
+                    <Switch>
+                        <Route exact path="/" component={AllArticles} />
+                        <Route
+                            exact
+                            path="/server-error"
+                            component={ErrorHandler}
+                        />
+                        <Route exact path="/login" component={SignIn} />
+                        <Route exact path="/signup" component={SignUp} />
+                        <Route exact path="/logout" component={LogoutView} />
+                    </Switch>
+                </div>
+            </Router>
+        </BrowserRouter>
+    );
 };
 export default AppRoutes;
