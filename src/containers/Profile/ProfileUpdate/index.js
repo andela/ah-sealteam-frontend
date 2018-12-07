@@ -11,7 +11,8 @@ export default class ProfileUpdate extends Component {
                 bio: '',
                 image: ''
             },
-            validation: {}
+            validation: {},
+            success: ''
         };
     }
 
@@ -49,8 +50,7 @@ export default class ProfileUpdate extends Component {
     /**
      * Handles the updating of the user by calling the updateUser thunk action creator
      */
-    handleSubmit = e => {
-        e.preventDefault();
+    handleSubmit = () => {
         const { updateUser } = this.props;
         const data = { profile: this.state.profile };
         updateUser(data.profile);
@@ -61,51 +61,60 @@ export default class ProfileUpdate extends Component {
         const updateForm = (
             <div className="row mt-3 d-flex justify-content-center">
                 <div className="col-md-8">
-                    <form className="form" onSubmit={this.handleSubmit}>
-                        {/* {First Name Last name Start} */}
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="">
-                                    First &amp; LastName
+                    <form autoComplete="off" className="form">
+                        {this.state.success !== '' ? (
+                            <div className="alert alert-success">
+                                {this.state.success}
+                            </div>
+                        ) : (
+                            ''
+                        )}
+                        <div className="form-row">
+                            <div className="col-md-6 mb-3">
+                                <label htmlFor="firstname">First name</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    aria-label="Small"
+                                    id="firstname"
+                                    name="firstname"
+                                    aria-describedby="inputGroup-sizing-sm"
+                                    onChange={this.handleChange}
+                                    defaultValue={data.firstname}
+                                    required
+                                />
+                                <span className="text-danger">
+                                    {this.state.validation.firstname}
                                 </span>
                             </div>
-                            <input
-                                type="text"
-                                class="form-control"
-                                aria-label="Small"
-                                name="firstname"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleChange}
-                                defaultValue={data.firstname}
-                            />
-                            <input
-                                type="text"
-                                class="form-control"
-                                aria-label="Small"
-                                name="lastname"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleChange}
-                                defaultValue={data.lastname}
-                            />
-                            <span className="text-danger">
-                                {this.state.validation.firstname}
-                            </span>
-                            <span className="text-danger">
-                                {this.state.validation.lastname}
-                            </span>
+                            <div className="col-md-6 mb-3">
+                                <label htmlFor="lastname">Last name</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    aria-label="Small"
+                                    name="lastname"
+                                    aria-describedby="inputGroup-sizing-sm"
+                                    onChange={this.handleChange}
+                                    defaultValue={data.lastname}
+                                    required
+                                />
+                                <span className="text-danger">
+                                    {this.state.validation.lastname}
+                                </span>
+                            </div>
                         </div>
-                        {/* {Fitst Name Last Name End} */}
-                        {/* {Bio & Submit Start} */}
-                        <div className="form-group">
-                            <div className="col-xs-12">
+                        <div className="form-row">
+                            <div className="col-md-12 mb-3">
                                 <label htmlFor="bio">Bio</label>
                                 <textarea
                                     name="bio"
                                     id="bio"
-                                    rows="4"
+                                    rows="5"
                                     className="form-control"
                                     defaultValue={data.bio}
                                     onChange={this.handleChange}
+                                    required
                                 />
                                 <span className="text-danger">
                                     {this.state.validation.bio}
@@ -115,15 +124,52 @@ export default class ProfileUpdate extends Component {
                         <div className="form-group">
                             <div className="col-xs-12">
                                 <button
+                                    id="submitBtn"
                                     className="btn btn-md btn-success btn-block"
                                     type="submit"
+                                    onClick={() => {
+                                        Object.values(
+                                            this.state.validation
+                                        ).forEach(value => {
+                                            value !== ''
+                                                ? this.setState({
+                                                      validation: {
+                                                          ...this.state
+                                                              .validation
+                                                      }
+                                                  })
+                                                : this.setState(
+                                                      {
+                                                          success:
+                                                              'Successfully updated'
+                                                      },
+                                                      () => {
+                                                          setTimeout(() => {
+                                                              this.setState(
+                                                                  {
+                                                                      success:
+                                                                          ''
+                                                                  },
+                                                                  () => {
+                                                                      this.handleSubmit();
+                                                                      document
+                                                                          .getElementById(
+                                                                              'hideModal'
+                                                                          )
+                                                                          .click();
+                                                                  }
+                                                              );
+                                                          }, 1500);
+                                                      }
+                                                  );
+                                        });
+                                    }}
                                 >
                                     <i className="glyphicon glyphicon-ok-sign" />
                                     Update Profile
                                 </button>
                             </div>
                         </div>
-                        {/* {Bio & Submit End} */}
                     </form>
                 </div>
             </div>

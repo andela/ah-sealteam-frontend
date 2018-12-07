@@ -9,13 +9,13 @@ import ViewArticles from '../containers/Articles/ViewArticles';
 import ErrorHandler from '../components/ErrorHandler';
 import LogoutView from '../containers/Logout';
 import ResetPassword from '../containers/ResetPassword';
-import {PrivateRoute} from './protectedRoutes';
+import { PrivateRoute } from './protectedRoutes';
 
 const AppRoutes = () => {
     return (
         <BrowserRouter>
             <Router history={history}>
-                <div>
+                <div className="container">
                     <Switch>
                         <Route exact path="/" component={ViewArticles} />
                         <Route
@@ -31,7 +31,11 @@ const AppRoutes = () => {
                             path="/resetpassword"
                             component={ResetPassword}
                         />
-                        <PrivateRoute exact path="/profile" component={Profile} />
+                        <PrivateRoute
+                            exact
+                            path="/profile"
+                            component={Profile}
+                        />
                     </Switch>
                 </div>
             </Router>

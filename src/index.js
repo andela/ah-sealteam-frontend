@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assets/styles/index.scss';
+// import './assets/styles/index.scss';
 import { Provider } from 'react-redux';
 import store from './store';
 import AppRoutes from './routes';

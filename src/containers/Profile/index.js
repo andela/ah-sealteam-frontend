@@ -11,7 +11,8 @@ import uploadToCloudinary from '../../utils/cloudinary';
 class Profile extends Component {
     state = {
         profile: {},
-        imageUrl: null
+        imageUrl: null,
+        loading: false
     };
 
     componentDidMount() {
@@ -23,10 +24,14 @@ class Profile extends Component {
      */
     handleImageUpload = e => {
         const imageUrl = e.target.files[0];
-        this.setState({ imageUrl }, () => {
+        this.setState({ imageUrl, loading: true }, () => {
             uploadToCloudinary(this.state.imageUrl).then(data => {
                 this.setState({ profile: { image: data } }, () => {
-                    this.handleSubmit();
+                    setTimeout(() => {
+                        this.setState({ loading: false }, () =>
+                            this.handleSubmit()
+                        );
+                    }, 1000);
                 });
             });
         });
@@ -42,145 +47,190 @@ class Profile extends Component {
     }
 
     render() {
-        console.log(this.props.profile);
         const { data, fetching, fetched } = this.props.profile;
         const info = (
-            <div className="container">
-                <div className="row mt-4">
-                    {/* {Profile image Start} */}
-                    <div className="col-md-4">
-                        <div className="text-center">
-                            <figure>
-                                <img
-                                    src={
-                                        data.image
-                                            ? data.image
-                                            : 'http://ssl.gstatic.com/accounts/ui/avatar_2x.png'
-                                    }
-                                    className="avatar rounded-circle img-thumbnail img-fluid"
-                                    alt="avatar"
-                                />
-                                <label htmlFor="update-image" className="mt-1">
-                                    <input
-                                        type="file"
-                                        id="update-image"
-                                        name="image"
-                                        className="d-none"
-                                        accept="image/*"
-                                        onChange={this.handleImageUpload}
+            <React.Fragment>
+                <div className="container">
+                    <div className="row mt-4">
+                        {/* {Profile image Start} */}
+                        <div className="col-md-4 mt-4">
+                            <div className="text-center">
+                                <figure>
+                                    <img
+                                        src={
+                                            data.image
+                                                ? data.image
+                                                : 'http://ssl.gstatic.com/accounts/ui/avatar_2x.png'
+                                        }
+                                        className="avatar rounded-circle img-thumbnail mx-auto d-block img-fluid"
+                                        alt="avatar"
                                     />
-                                    <span className="btn btn-light btn-block">
-                                        Update Image
-                                    </span>
-                                </label>
-                            </figure>
+                                    <label
+                                        htmlFor="update-image"
+                                        className="mt-1"
+                                    >
+                                        <input
+                                            type="file"
+                                            id="update-image"
+                                            name="image"
+                                            className="d-none"
+                                            accept="image/*"
+                                            onChange={this.handleImageUpload}
+                                        />
+                                        <span className="btn btn-light btn-block">
+                                            Update Image
+                                        </span>
+                                    </label>
+                                </figure>
 
-                            <h6 className="mt-1">{data.username}</h6>
-                        </div>
-                        <br />
-                    </div>
-                    {/* {Profile image End} */}
-                    <div className="col-md-8 text-center">
-                        {/* {Profile Details Start} */}
-                        <nav>
-                            <div
-                                className="nav nav-tabs"
-                                id="nav-tab"
-                                role="tablist"
-                            >
-                                <a
-                                    className="nav-item nav-link active"
-                                    id="nav-profile-tab"
-                                    data-toggle="tab"
-                                    href="#nav-profile"
-                                    role="tab"
-                                    aria-controls="nav-profile"
-                                    aria-selected="false"
-                                >
-                                    Profile
-                                </a>
-                                <a
-                                    className="nav-item nav-link"
-                                    id="nav-profile-update-tab"
-                                    data-toggle="tab"
-                                    href="#nav-profile-update"
-                                    role="tab"
-                                    aria-controls="nav-profile-update"
-                                    aria-selected="false"
-                                >
-                                    Update Profile
-                                </a>
+                                <h6 className="mt-1">{`${
+                                    data.firstname ? data.firstname : ''
+                                } ${data.lastname ? data.lastname : ''}`}</h6>
                             </div>
-                        </nav>
-                        <div className="tab-content" id="nav-tabContent">
-                            {/* Profile Tab Start*/}
                             <div
-                                className="tab-pane fade show active"
-                                id="nav-profile"
-                                role="tabpanel"
-                                aria-labelledby="nav-profile-tab"
-                            >
-                                <ul className="list-group mt-3">
-                                    <li className="list-group-item text-muted">
-                                        Activity{' '}
-                                        <i className="fa fa-dashboard fa-1x" />
-                                    </li>
-                                    <li className="list-group-item text-center">
-                                        <div className="row">
-                                            <div className="col-md-4">
-                                                <p>{data.followers}</p>
-                                                <p className="d-inline-block">
-                                                    Followers
-                                                </p>
-                                            </div>
-                                            <div className="col-md-4">
-                                                <p>{data.following}</p>
-                                                <p className="d-inline-block">
-                                                    Following
-                                                </p>
-                                            </div>
-                                            <div className="col-md-4">
-                                                <p>{data.articles}</p>
-                                                <p className="d-inline-block">
-                                                    Articles
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li className="list-group-item text-right d-inline">
-                                        <div className="panel panel-default">
-                                            <div className="panel-heading text-center font-weight-bold">
-                                                About me
-                                            </div>
-                                            <div className="panel-body text-center">
-                                                {' '}
-                                                {data.bio}
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            {/* {Profile Tab End} */}
-                            {/* Update Profile Tab Start*/}
-                            <div
-                                className="tab-pane fade"
-                                id="nav-profile-update"
-                                role="tabpanel"
-                                aria-labelledby="nav-profile-update-tab"
-                            >
-                                {
-                                    <ProfileUpdate
-                                        profile={this.props.profile}
-                                        updateUser={this.props.updateUser}
-                                    />
+                                className={
+                                    this.state.loading ? 'lds-rolling' : ''
                                 }
+                            >
+                                <div />
                             </div>
-                            {/* {Update Profile Tab End} */}
+                            <br />
                         </div>
+                        {/* {Profile image End} */}
+                        <div className="col-md-8 text-center">
+                            {/* {Profile Details Start} */}
+                            <nav>
+                                <div
+                                    className="nav"
+                                    id="nav-tab"
+                                    role="tablist"
+                                >
+                                    <a
+                                        className="nav-item nav-link"
+                                        id="nav-profile-update-tab"
+                                        data-toggle="tab"
+                                        href="#nav-profile-update"
+                                        role="tab"
+                                        aria-controls="nav-profile-update"
+                                        aria-selected="false"
+                                    >
+                                        {/* {Modal Implementation} */}
+                                        <button
+                                            type="button"
+                                            className="btn btn-light"
+                                            data-toggle="modal"
+                                            data-target=".bd-example-modal-lg"
+                                        >
+                                            <i className="fa fa-pencil pencil">
+                                                Update Profile
+                                            </i>
+                                        </button>
+
+                                        <div
+                                            className="modal fade bd-example-modal-lg"
+                                            tabIndex="-1"
+                                            role="dialog"
+                                            aria-labelledby="myLargeModalLabel"
+                                            aria-hidden="true"
+                                        >
+                                            <div className="modal-dialog modal-lg">
+                                                <div className="modal-content">
+                                                    <div
+                                                        arria-hidden="true"
+                                                        id="hideModal"
+                                                        className="close-modal"
+                                                        onClick={() =>
+                                                            document
+                                                                .getElementById(
+                                                                    'hideModal'
+                                                                )
+                                                                .click()
+                                                        }
+                                                        data-dismiss="modal"
+                                                    >
+                                                        {' '}
+                                                        <i className="fa fa-window-close pull-left" />
+                                                    </div>
+                                                    {
+                                                        <ProfileUpdate
+                                                            profile={
+                                                                this.props
+                                                                    .profile
+                                                            }
+                                                            updateUser={
+                                                                this.props
+                                                                    .updateUser
+                                                            }
+                                                        />
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* {Modal implementation} */}
+                                    </a>
+                                </div>
+                            </nav>
+                            <div className="tab-content" id="nav-tabContent">
+                                {/* Profile Tab Start*/}
+                                <div
+                                    className="tab-pane fade show active"
+                                    id="nav-profile"
+                                    role="tabpanel"
+                                    aria-labelledby="nav-profile-tab"
+                                >
+                                    <ul className="list-group mt-3">
+                                        <li className="list-group-item text-muted">
+                                            Activity{' '}
+                                            <i className="fa fa-dashboard fa-1x" />
+                                        </li>
+                                        <li className="list-group-item text-center">
+                                            <div className="row">
+                                                <div className="col-md-4">
+                                                    <p>{data.followers}</p>
+                                                    <p className="d-inline-block">
+                                                        Followers
+                                                    </p>
+                                                </div>
+                                                <div className="col-md-4">
+                                                    <p>{data.following}</p>
+                                                    <p className="d-inline-block">
+                                                        Following
+                                                    </p>
+                                                </div>
+                                                <div className="col-md-4">
+                                                    <p>{data.articles}</p>
+                                                    <p className="d-inline-block">
+                                                        Articles
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>{' '}
+                                        {data.bio !== '' ? (
+                                            <li className="list-group-item text-right d-inline">
+                                                <div className="panel panel-default">
+                                                    <div className="panel-heading text-center font-weight-bold">
+                                                        <p>
+                                                            about{' '}
+                                                            {data.username}
+                                                        </p>
+                                                    </div>
+                                                    <div className="panel-body text-center">
+                                                        {data.bio}
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        ) : (
+                                            ''
+                                        )}
+                                    </ul>
+                                </div>
+                                {/* {Profile Tab End} */}
+                            </div>
+                        </div>
+                        {/* {Profile details End} */}
                     </div>
-                    {/* {Profile details End} */}
                 </div>
-            </div>
+            </React.Fragment>
         );
         return <div>{fetching && !fetched ? <Loader /> : info}</div>;
     }
