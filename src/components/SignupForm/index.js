@@ -21,7 +21,7 @@ const SignupForm = props => {
       <br />
       <p className="text-center">
         {account}
-        <a href="./signup"> {login}</a>
+        <a href="/login"> {login}</a>
       </p>
     </form>
   );
