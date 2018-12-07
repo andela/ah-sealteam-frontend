@@ -1,0 +1,8 @@
+figure {
+    margin-top: 0px;
+    margin: 0px 40px !important;
+}
+.img-fluid {
+    max-width: 90%;
+    height: auto;
+}
