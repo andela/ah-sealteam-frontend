@@ -1,0 +1,14 @@
+figure {
+    margin-top: 0px;
+    margin: 0px 40px !important;
+    position: relative;
+}
+.img-fluid {
+    max-width: 90%;
+    height: auto;
+}
+
+.pencil,
+.circle {
+    font-size: 20px;
+}

@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/styles/index.scss';
@@ -7,10 +8,10 @@ import configureStore from './store';
 import AppRoutes from './routes';
 
 ReactDOM.render(
-  <Provider store={configureStore()}>
-    <AppRoutes />
-  </Provider>,
-  document.getElementById('root')
+    <Provider store={configureStore()}>
+        <AppRoutes />
+    </Provider>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
