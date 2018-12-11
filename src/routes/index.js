@@ -5,6 +5,7 @@ import { Router } from 'react-router-dom';
 import { history } from '../history';
 import SignIn from '../containers/Signin';
 import AllArticles from '../containers/AllArticle';
+import ErrorHandler from '../components/ErrorHandler';
 
 const AppRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const AppRoutes = () => {
         <div>
           <Switch>
             <Route exact path="/" component={AllArticles} />
+            <Route exact path="/server-error" component={ErrorHandler} />
             <Route exact path="/login" component={SignIn} />
             <Route exact path="/signup" component={SignUp} />
           </Switch>

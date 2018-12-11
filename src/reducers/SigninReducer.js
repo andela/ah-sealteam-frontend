@@ -19,6 +19,7 @@ export const userAuth = (state = initialState, action) => {
         ...state,
         isLoggingIn: true,
         noAttempt: false,
+        errors: null,
         isLoggedIn: false
       };
     case LOGGED_FAILED:
@@ -32,6 +33,7 @@ export const userAuth = (state = initialState, action) => {
       return {
         ...state,
         isLoggingIn: false,
+        errors: null,
         isLoggedIn: true
       };
     case LOGOUT:

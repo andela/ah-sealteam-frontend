@@ -2,6 +2,7 @@ import React from 'react';
 import './index.scss';
 import { title, account, login } from '../../constants';
 import Loader from '../Loader';
+import { Link } from 'react-router-dom';
 import UsernameField from '../InputFields/username_input_field';
 import EmailField from '../InputFields/email_input_field';
 import PasswordField from '../InputFields/password_input_field';
@@ -18,11 +19,14 @@ const SignupForm = props => {
       <ConfirmPasswordField confirmpasswordError={props.confirmpasswordError} />
       <button>Register</button>
       <br />
-      <br />
-      <p className="text-center">
-        {account}
-        <a href="/login"> {login}</a>
-      </p>
+      <div className="test">
+        <p>
+          {account}{' '}
+          <Link to="/login" className="txt1">
+            {login}
+          </Link>
+        </p>
+      </div>
     </form>
   );
 };

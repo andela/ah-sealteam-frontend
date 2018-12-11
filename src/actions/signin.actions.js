@@ -23,24 +23,21 @@ export const loginRequest = () => ({
 
 export const login = (data, history) => dispatch => {
   dispatch(loginRequest());
-  userService
-    .login(data)
-    .then(response => {
-      if (response.user) {
-        const { token } = response.user;
-        const user = jwtDecode(token);
-        localStorage.setItem('user', token);
-        dispatch(loginSuccess(user));
-        history.push('/');
+  userService.login(data).then(response => {
+    if (response.user) {
+      const { token } = response.user;
+      const user = jwtDecode(token);
+      localStorage.setItem('user', token);
+      dispatch(loginSuccess(user));
+      history.push('/');
+    } else {
+      if (response.response === undefined) {
+        dispatch(loginError({ server: 'The server is down' }));
       } else {
-        const error = new Error(response.statusText);
-        error.response = response;
-        dispatch(loginError(error));
+        dispatch(loginError(response.response.data.errors));
       }
-    })
-    .catch(error => {
-      dispatch(loginError(error));
-    });
+    }
+  });
 };
 
 export const logout = () => {
