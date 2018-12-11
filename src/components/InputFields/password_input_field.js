@@ -11,6 +11,8 @@ const PasswordField = props => {
       placeholder="Password"
       className="form-control"
       name="password"
+      onChange={props.change}
+      value={props.passValue}
       error={props.passError === undefined ? '' : props.passError}
     />
   );
