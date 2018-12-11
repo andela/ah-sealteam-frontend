@@ -10,6 +10,8 @@ const EmailField = props => {
       placeholder="Email Address"
       className="form-control"
       name="email"
+      onChange={props.change}
+      value={props.emailValue}
       error={props.emailError === undefined ? '' : props.emailError}
     />
   );
