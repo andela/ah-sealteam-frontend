@@ -2,11 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../SignupForm/index.scss';
 
-const inputField = ({ type, placeholder, className, name, error }) => (
+const inputField = ({
+  type,
+  placeholder,
+  className,
+  name,
+  error,
+  value,
+  onChange
+}) => (
   <div className="form-group form-wrapper">
     <input
       type={type}
+      onChange={onChange}
       placeholder={placeholder}
+      value={value}
       className={className}
       name={name}
       required
