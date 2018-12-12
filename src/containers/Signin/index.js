@@ -44,15 +44,16 @@ class SignIn extends Component {
     }
     const { email, password } = this.state;
     return (
-      <div className="wrapper wrapper-image">
+      <div className="wrapper wrapper-image div-wrapper">
         <div className="inner shadow-lg p-3 bg-white rounded">
           <div className="image-holder">
-            <img src={image} alt="" />
+            <img src={image} className="form-image" alt="" />
           </div>
           <SigninForm
             change={this.handleInputValueChange}
             submit={this.handleSubmit}
             emailValue={email}
+            emailError={errors ? errors.email : ''}
             passValue={password}
             errorMessage={
               errors && errors.error === undefined

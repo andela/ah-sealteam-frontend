@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './index.scss';
 
 class Loader extends Component {
   render() {

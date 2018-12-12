@@ -22,7 +22,7 @@ const Navbar = props => {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {props.user ? (
-            <ul className="navbar-nav ml-auto topnav">
+            <ul className="navbar-nav ml-auto topnav navUl">
               <li className="nav-item">
                 <NavLink
                   onClick={() => props.logout()}
@@ -34,7 +34,7 @@ const Navbar = props => {
               </li>
             </ul>
           ) : (
-            <ul className="navbar-nav ml-auto topnav">
+            <ul className="navbar-nav ml-auto topnav navUl">
               <li className="nav-item">
                 <NavLink className="nav-link" to="/signup">
                   Signup

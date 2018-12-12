@@ -1,5 +1,4 @@
 import React from 'react';
-import '../SignupForm/index.scss';
 import InputField from './index';
 
 const EmailField = props => {
@@ -8,7 +7,7 @@ const EmailField = props => {
     <InputField
       type="text"
       placeholder="Email Address"
-      className="form-control"
+      className="form-control control"
       name="email"
       onChange={props.change}
       value={props.emailValue}

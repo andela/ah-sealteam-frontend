@@ -1,5 +1,4 @@
 import React from 'react';
-import '../SignupForm/index.scss';
 import InputField from './index';
 
 const UsernameField = props => {
@@ -9,7 +8,7 @@ const UsernameField = props => {
     <InputField
       type="text"
       placeholder="Username"
-      className="form-control"
+      className="form-control control"
       name="username"
       error={props.usernameError === undefined ? '' : props.usernameError}
     />
