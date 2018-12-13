@@ -31,3 +31,12 @@ export const CLEAR = 'ALERT_CLEAR';
 export const RESET_PASSWORD_BEGIN = 'RESET_PASSWORD_BEGIN';
 export const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
 export const RESET_PASSWORD_FAILURE = 'RESET_PASSWORD_FAILURE';
+//Cloudinary API details
+export const CLOUDINARY_URL =
+    'https://api.cloudinary.com/v1_1/botnetdobbs/image/upload';
+export const CLOUDINARY_UPLOAD_PRESET = 'ind3ojf2';
+
+//Article constants
+export const CREATE_ARTICLE = 'CREATE_ARTICLE';
+export const CREATE_ARTICLE_SUCCESS = 'CREATE_ARTICLE_SUCCESS';
+export const CREATE_ARTICLE_FAILURE = 'CREATE_ARTICLE_FAILURE';
