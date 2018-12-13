@@ -6,6 +6,8 @@ import { Router } from 'react-router-dom';
 import { history } from '../history';
 import SignIn from '../containers/Signin';
 import ViewArticles from '../containers/Articles/ViewArticles';
+import Create from '../containers/Article/Create';
+import Read from '../containers/Article/Read';
 import ErrorHandler from '../components/ErrorHandler';
 import LogoutView from '../containers/Logout';
 import ResetPassword from '../containers/ResetPassword';
@@ -28,11 +30,13 @@ const AppRoutes = () => {
                         <Route exact path="/login" component={SignIn} />
                         <Route exact path="/signup" component={SignUp} />
                         <Route exact path="/logout" component={LogoutView} />
-                        <Route
+                        <Route exact path="/resetpassword" component={ResetPassword} />
+                        <PrivateRoute
                             exact
-                            path="/resetpassword"
-                            component={ResetPassword}
+                            path="/articles/create"
+                            component={Create}
                         />
+                        <Route exact path="/articles/:slug" component={Read} />
                         <PrivateRoute
                             exact
                             path="/profile"

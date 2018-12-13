@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import SocialAuthReducer from './socialauth.reducer';
 import allErrors from './SignUpReducer';
 import userAuth from './SigninReducer';
+import articleCRD from './articleReducer';
 import resetPasswordReducer from './resetPasswordReducer';
 import allArticles from './ViewArticlesReducer';
 import userInfo from './ProfileReducer';
@@ -14,5 +15,6 @@ export default combineReducers({
     userAuth,
     resetPasswordReducer,
     userInfo,
-    notificationsReducer
+    notificationsReducer,
+    articleCRD
 });
