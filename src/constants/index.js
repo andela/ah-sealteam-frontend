@@ -19,3 +19,7 @@ export const LOGGED_SUCCESSFULLY = 'LOGGED_SUCCESSFULLY';
 export const SUCCESS = 'ALERT_SUCCESS';
 export const ERROR = 'ALERT_ERROR';
 export const CLEAR = 'ALERT_CLEAR';
+
+// Articles constants
+export const FETCH_ARTICLES = 'FETCH_ARTICLES';
+export const FETCH_ARTICLES_SUCCESS = 'FETCH_ARTICLES_SUCCESS';
