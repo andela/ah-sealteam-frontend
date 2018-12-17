@@ -2,21 +2,21 @@ import { BASE_URL } from '../constants';
 import axios from 'axios';
 
 export const login = data => {
-  const url = `${BASE_URL}users/login`;
+    const url = `${BASE_URL}users/login`;
 
-  return axios
-    .post(url, data)
-    .then(response => response.data)
-    .catch(error => error);
+    return axios
+        .post(url, data)
+        .then(response => response.data)
+        .catch(error => error);
 };
 
 export const logout = () => {
-  localStorage.removeItem('user');
+    localStorage.clear();
 };
 
 export const userService = {
-  login,
-  logout
+    login,
+    logout
 };
 
 export default userService;

@@ -11,6 +11,12 @@ export const account = 'Already have an account?';
 export const login = 'Login Here';
 export const confirmpassword = 'Passwords do not match';
 
+export const SOCIALLOGIN_FULFILLED = 'SOCIALLOGIN_FULFILLED';
+export const SOCIALLOGIN_REJECTED = 'SOCIALLOGIN_REJECTED';
+export const SOCIALLOGIN_PENDING = 'SOCIALLOGIN_PENDING';
+export const SOCIALLOGIN_FAILED = 'SOCIALLOGIN_FAILED';
+export const SOCIALLOGIN_LOGOUT = 'SOCIALLOGIN_LOGOUT';
+
 // Singin Constants
 export const LOGOUT = 'LOGOUT';
 export const LOGIN_ATTEMPT = 'LOGIN_ATTEMPT';
