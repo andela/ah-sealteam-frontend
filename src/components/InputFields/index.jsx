@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../SignupForm/index.scss';
 
 const inputField = ({
   type,
@@ -11,7 +10,7 @@ const inputField = ({
   value,
   onChange
 }) => (
-  <div className="form-group form-wrapper">
+  <div className="form-group form-wrapper divWrapper">
     <input
       type={type}
       onChange={onChange}

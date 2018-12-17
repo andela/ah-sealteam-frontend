@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.scss';
 import 'jquery';
 import signUpAction from '../../actions/signup_action';
 import { connect } from 'react-redux';
@@ -30,6 +29,7 @@ class SignUp extends Component {
       const input = form.elements[name];
       values.push(input.value);
     }
+    console.log(values);
     if (values[2] !== values[3]) {
       this.setState({
         passwordError: confirmpassword
@@ -45,16 +45,16 @@ class SignUp extends Component {
   render() {
     const { errors, loading } = this.props.errors;
     return (
-      <div className="wrapper wrapper-image">
+      <div className="wrapper wrapper-image div-wrapper">
         <div className="inner shadow-lg p-3 bg-white rounded">
           <div className="image-holder">
-            <img src={image} alt="" />
+            <img src={image} className="form-image" alt="" />
           </div>
           <SignUpForm
             submit={this.handleSubmit}
-            usernameError={errors['username']}
-            emailError={errors['email']}
-            passError={errors['password']}
+            usernameError={errors ? errors['username'] : ''}
+            emailError={errors ? errors['email'] : ''}
+            passError={errors ? errors['password'] : ''}
             confirmpasswordError={this.state.passwordError}
             loading={loading}
           />

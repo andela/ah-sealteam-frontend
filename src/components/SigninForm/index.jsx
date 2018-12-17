@@ -11,11 +11,10 @@ const SigninForm = props => {
       {props.errorMessage && (
         <p className="alert alert-danger">{props.errorMessage}</p>
       )}
-
-      <h3>Sign In</h3>
-      <EmailField emailValue={props.emailValue} change={props.change} />
+      <h3 className="form-title">Sign In</h3>
+      <EmailField emailError={props.emailError} emailValue={props.emailValue} change={props.change} />
       <PasswordField passValue={props.passValue} change={props.change} />
-      <button onSubmit={props.submit}>Login</button>
+      <button className="form-button" onSubmit={props.submit}>Login</button>
       <br />
       <p>
         <Link to="/resetpassword" className="txt1">

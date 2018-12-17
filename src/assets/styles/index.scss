@@ -1,4 +1,51 @@
 * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #333;
+  font-size: 13px;
+  margin: 0;
+  background-color: #f6f1ed;
+}
+
+.form-image {
+  max-width: 100%;
+}
+
+.navUl {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.div-wrapper {
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  background-color: #f6f1ed;
+}
+.inner {
+  padding: 20px;
+  background: #fff;
+  max-width: 850px;
+  margin: auto;
+  display: flex;
+
+  .image-holder {
+    width: 50%;
+  }
+}
+
+.swal-overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+* {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -10,6 +57,7 @@
   -moz-box-shadow: 0 10px 6px -6px #777;
   box-shadow: 0 7px 6px -6px #777;
 }
+
 .navbar>.container a {
   color: #333333;
 }
@@ -21,6 +69,8 @@
 {
   padding: 40px 15px;
   text-align: center;
+  margin: 0 auto;
+  margin-top: 40px;
 }
 .error-actions
 {
@@ -48,7 +98,7 @@
 }
 
 .help-block {
-  color: red;
+  color: #a94442;
   font-size: 11px;
 }
 
@@ -91,17 +141,15 @@ input::-moz-placeholder {color: #999999;}
 input:-ms-input-placeholder {color: #999999;}
 
 
-button {
+.form-button {
   outline: none !important;
   border: none;
   background: transparent;
 }
 
-button:hover {
+.form-button:hover {
   cursor: pointer;
 }
-
-
 
 // [ Utility ]
 .txt1 {
@@ -110,7 +158,6 @@ button:hover {
   line-height: 1.4;
   color: #999999;
 }
-
 
 .test {
   margin-top: 1em;
@@ -369,4 +416,231 @@ input.input {
     padding: 43px 15px 57px 15px;
   }
 
+}
+
+.myForm {
+  width: 50%;
+  padding-top: 36px;
+  padding-left: 45px;
+  padding-right: 45px;
+}
+ 
+.form-title {
+  text-transform: uppercase;
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  margin-bottom: 28px;
+}
+.divWrapper {
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #a94442;
+  i {
+    position: absolute;
+    bottom: 12px;
+    right: 0;
+
+  }
+}
+.form-button {
+  border: none;
+  width: 100%;
+  height: 51px;
+  margin: auto;
+  margin-top: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  padding: 0;
+  background: #6a5750;
+  font-size: 15px;
+  color: #fff;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  i {
+    margin-left: 10px;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  &:hover, &:focus, &:active {
+    background: #30231d;
+    i {
+      -webkit-animation-name: hvr-icon-wobble-horizontal;
+      animation-name: hvr-icon-wobble-horizontal;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-timing-function: ease-in-out;
+      animation-timing-function: ease-in-out;
+      -webkit-animation-iteration-count: 1;
+      animation-iteration-count: 1;
+    }
+  }
+}
+@-webkit-keyframes hvr-icon-wobble-horizontal {
+  16.65% {
+    -webkit-transform: translateX(6px);
+    transform: translateX(6px);
+  }
+  33.3% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px);
+  }
+  49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+  }
+  66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px);
+  }
+  83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes hvr-icon-wobble-horizontal {
+  16.65% {
+    -webkit-transform: translateX(6px);
+    transform: translateX(6px);
+  }
+  33.3% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px);
+  }
+  49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+  }
+  66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px);
+  }
+  83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@media (max-width: 1199px) {
+  .wrapper {
+    background-position: right center;
+  }
+}
+@media (max-width: 991px) {
+  .inner form {
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 767px) {
+  .inner {
+    display: block;
+    .image-holder {
+      width: 100%;
+    }
+    form {
+      width: 100%;
+      padding: 40px 0 30px;
+    }
+  }
+  .form-button {
+    margin-top: 60px;
+  }
+}
+
+//form validation
+input[type="text"], input[type="email"], input[type="password"], input[name="confirm password"]{
+  font-size: 7px;
+  width: 100%;
+  line-height: 65px;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.has-error input[type="text"],
+.has-error input[type="email"],
+.has-error input[type="password"], {
+  border: 1px solid #a94442;
+}
+
+.control {
+border-top: none;
+border-right: none;
+border-left: none;
+display: block;
+width: 100%;
+height: 30px;
+padding: 0;
+margin-bottom: 25px;
+font-size: 18px; 
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+&::-webkit-input-placeholder { 
+  font-size: 13px;
+  color: #333;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+&::-moz-placeholder { 
+  font-size: 13px;
+  color: #333;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+&:-ms-input-placeholder { 
+  font-size: 13px;
+  color: #333;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+&:-moz-placeholder { 
+  font-size: 13px;
+  color: #333;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+}
+
+.loader {
+	height : 8px;
+	width  : 36px; /* (6 * <margin: 2px>) + (3 * <width: 8px>) */ 
+}
+
+.divLoader{
+	margin-bottom: 30px;
+}
+
+.loader-box {
+	display: inline-block;
+	height: 8px;
+	width: 8px;
+	margin: 0px 2px;
+	background-color: rgb(0,146,255);
+	animation-name: fadeOutIn;
+	animation-duration: 500ms;
+	animation-iteration-count : infinite;
+	animation-direction: alternate;
+}
+
+.loader-box:nth-child(1) { animation-delay: 250ms; } /* (1/2) * <animation-duration: 500ms */
+.loader-box:nth-child(2) { animation-delay: 500ms; } /* (2/2) * <animation-duration: 500ms */
+.loader-box:nth-child(3) { animation-delay: 750ms; } /* (3/2) * <animation-duration: 500ms */
+
+@keyframes fadeOutIn {
+	0%   { background-color : rgba(0,146,255,1); }
+	100% { background-color : rgba(0,146,255,0); }
+}
+
+.error{
+  margin-top: 50px;
+  margin: 0 auto;
 }

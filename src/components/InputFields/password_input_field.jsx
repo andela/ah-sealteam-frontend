@@ -1,5 +1,4 @@
 import React from 'react';
-import '../SignupForm/index.scss';
 import InputField from './index';
 
 const PasswordField = props => {
@@ -9,7 +8,7 @@ const PasswordField = props => {
     <InputField
       type="password"
       placeholder="Password"
-      className="form-control"
+      className="form-control control"
       name="password"
       onChange={props.change}
       value={props.passValue}

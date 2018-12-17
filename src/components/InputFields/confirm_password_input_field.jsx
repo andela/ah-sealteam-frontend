@@ -1,5 +1,4 @@
 import React from 'react';
-import '../SignupForm/index.scss';
 import InputField from './index';
 
 const ConfirmPasswordField = props => {
@@ -8,7 +7,7 @@ const ConfirmPasswordField = props => {
     <InputField
       type="password"
       placeholder="Confirm Password"
-      className="form-control"
+      className="form-control control"
       name="confirm-password"
       error={
         props.confirmpasswordError === '' ? '' : props.confirmpasswordError

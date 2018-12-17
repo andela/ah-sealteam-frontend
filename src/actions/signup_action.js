@@ -25,28 +25,35 @@ export const signupUserSuccess = () => ({
 
 export const signUpAction = data => dispatch => {
   dispatch(signupUser());
-  axios({
-    method: 'post',
-    url: API,
-    data: data
-  })
-    .then(response => {
-      dispatch(signupUserSuccess());
-      swal({
-        title: 'Welcome!',
-        text:
-          'Your registration is successful!!! Check your Email \n' +
-          'To Activate Your Account.',
-        icon: 'success'
-      }).then(() => {
-        history.push('./');
-      });
+  if (navigator.onLine) {
+    axios({
+      method: 'post',
+      url: API,
+      data: data
     })
-    .catch(error => {
-      if (error.response) {
-        dispatch(signupUserFail(error.response.data.errors));
-      }
-    });
+      .then(response => {
+        dispatch(signupUserSuccess());
+        swal({
+          title: 'Welcome!',
+          text:
+            'Your registration is successful!!! Check your Email \n' +
+            'To Activate Your Account.',
+          icon: 'success'
+        }).then(() => {
+          history.push('./');
+        });
+      })
+      .catch(error => {
+        if (error.response) {
+          if (error.response.status === 500) {
+            history.push('./server-error');
+          }
+          dispatch(signupUserFail(error.response.data.errors));
+        }
+      });
+  } else {
+    history.push('./server-error');
+  }
 };
 
 export default signUpAction;
