@@ -719,6 +719,7 @@ body {
   height: 300px;
   border: 1px solid #f1f1f1;
   perspective: 1000px;
+  
 }
 
 .flip-box-inner {
@@ -750,6 +751,7 @@ body {
   background-color: #363534;
   color: white;
   transform: rotateY(180deg);
+  overflow-y: scroll;
 }
 
 .card-body{
@@ -990,4 +992,3 @@ body {
   margin-left: 20px;
   margin-right: 20px;
 }
-
