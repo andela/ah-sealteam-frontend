@@ -51,7 +51,7 @@ const LandingPage = props => {
                       tags={item.tags}
                       description={item.description}
                       read_time={item.read_time}
-                      author={item.author.user.username}
+                      author={item.author.username}
                     />
                   ))
               : ''}

@@ -9,6 +9,7 @@ class ViewArticles extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <React.Fragment>
         <LandingPage
