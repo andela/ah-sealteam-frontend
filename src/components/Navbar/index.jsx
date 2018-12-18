@@ -3,11 +3,21 @@ import { NavLink, Link } from 'react-router-dom';
 
 const Navbar = props => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div className="container">
                 <Link className="navbar-brand" to="/">
                     AUTHOR'S HAVEN
                 </Link>
+
+                <div className="search-container">
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        className="search-input"
+                    />
+                    <div className="search" />
+                </div>
+
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -25,15 +35,24 @@ const Navbar = props => {
                     id="navbarSupportedContent"
                 >
                     {props.user ? (
-                        <ul className="navbar-nav ml-auto topnav">
+                        <ul className="navbar-nav ml-auto topnav navUl">
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/logout">
+                                <NavLink
+                                    onClick={() => props.logout()}
+                                    className="nav-link"
+                                    to="/"
+                                >
                                     Logout
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/">
+                                    <i className="fas fa-user" />
                                 </NavLink>
                             </li>
                         </ul>
                     ) : (
-                        <ul className="navbar-nav ml-auto topnav">
+                        <ul className="navbar-nav ml-auto topnav navUl">
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/signup">
                                     Signup

@@ -4,7 +4,7 @@ import SignUp from '../containers/SignUp';
 import { Router } from 'react-router-dom';
 import { history } from '../history';
 import SignIn from '../containers/Signin';
-import AllArticles from '../containers/AllArticle';
+import ViewArticles from '../containers/Articles/ViewArticles';
 import ErrorHandler from '../components/ErrorHandler';
 import LogoutView from '../containers/Logout';
 import ResetPassword from '../containers/ResetPassword';
@@ -15,7 +15,7 @@ const AppRoutes = () => {
             <Router history={history}>
                 <div>
                     <Switch>
-                        <Route exact path="/" component={AllArticles} />
+                        <Route exact path="/" component={ViewArticles} />
                         <Route
                             exact
                             path="/server-error"
@@ -24,12 +24,16 @@ const AppRoutes = () => {
                         <Route exact path="/login" component={SignIn} />
                         <Route exact path="/signup" component={SignUp} />
                         <Route exact path="/logout" component={LogoutView} />
-                        <Route exact path="/resetpassword" component={ResetPassword} />
+                        <Route
+                            exact
+                            path="/resetpassword"
+                            component={ResetPassword}
+                        />
                     </Switch>
                 </div>
             </Router>
         </BrowserRouter>
     );
-}
+};
 
 export default AppRoutes;
