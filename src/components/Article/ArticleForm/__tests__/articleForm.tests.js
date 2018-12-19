@@ -14,6 +14,12 @@ function setup() {
             tags: [],
             body: ''
         },
+        updateArticle: {
+            title: 'samople',
+            description: 'sample',
+            tags: ['tag1'],
+            body: 'vis atque dignitas'
+        },
         validation: {},
         errors: {
             title: [''],

@@ -5,8 +5,12 @@ import 'font-awesome/css/font-awesome.min.css';
 import '../Profile/index.css';
 import ProfileUpdate from './ProfileUpdate';
 import { bindActionCreators } from 'redux';
-import Loader from '../../components/Profile';
+// import Loader from '../../components/Profile';
 import uploadToCloudinary from '../../utils/cloudinary';
+import Loader from 'react-dots-loader';
+import 'react-dots-loader/index.css';
+import BookMark from '../BookMark';
+import 'react-dots-loader/index.css';
 
 class Profile extends Component {
     state = {
@@ -50,7 +54,7 @@ class Profile extends Component {
         const { data, fetching, fetched } = this.props.profile;
         const info = (
             <React.Fragment>
-                <div className="container-all">
+                <div className="container">
                     <div className="row mt-4">
                         {/* {Profile image Start} */}
                         <div className="col-md-4 mt-4">
@@ -78,7 +82,14 @@ class Profile extends Component {
                                             onChange={this.handleImageUpload}
                                         />
                                         <span className="btn btn-light btn-block">
-                                            Update Image
+                                            {this.state.loading ? (
+                                                <Loader
+                                                    size={10}
+                                                    distance={31}
+                                                />
+                                            ) : (
+                                                'Update Image'
+                                            )}
                                         </span>
                                     </label>
                                 </figure>
@@ -86,13 +97,6 @@ class Profile extends Component {
                                 <h6 className="mt-1">{`${
                                     data.firstname ? data.firstname : ''
                                 } ${data.lastname ? data.lastname : ''}`}</h6>
-                            </div>
-                            <div
-                                className={
-                                    this.state.loading ? 'lds-rolling' : ''
-                                }
-                            >
-                                <div />
                             </div>
                             <br />
                         </div>
@@ -230,9 +234,14 @@ class Profile extends Component {
                         {/* {Profile details End} */}
                     </div>
                 </div>
+                <BookMark />
             </React.Fragment>
         );
-        return <div>{fetching && !fetched ? <Loader /> : info}</div>;
+        return (
+            <div className="mt-4 ml-4">
+                {fetching && !fetched ? <Loader /> : info}
+            </div>
+        );
     }
 }
 

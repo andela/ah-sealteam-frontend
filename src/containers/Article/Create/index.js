@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { saveArticle } from '../../../actions/articleActions';
+import { saveArticle, fetchArticle } from '../../../actions/articleActions';
 import { connect } from 'react-redux';
 import ArticleForm from '../../../components/Article/ArticleForm';
+import uploadToCloudinary from '../../../utils/cloudinary';
 
 class Create extends Component {
     state = {
@@ -10,6 +11,7 @@ class Create extends Component {
             title: '',
             description: '',
             tags: [],
+            image: null,
             body: ''
         },
         validation: {},
@@ -20,7 +22,22 @@ class Create extends Component {
             body: ['']
         },
         success: null,
-        file: null
+        file: null,
+        loading: null
+    };
+
+    handleImageUpload = e => {
+        const imageUrl = e.target.files[0];
+        this.setState({ file: imageUrl, loading: true }, () => {
+            uploadToCloudinary(this.state.file).then(data => {
+                this.setState(
+                    { article: { ...this.state.article, image: data } },
+                    () => {
+                        this.setState({ loading: false });
+                    }
+                );
+            });
+        });
     };
 
     handleChange = e => {
@@ -51,8 +68,7 @@ class Create extends Component {
             }
         });
     };
-    handleSubmit = e => {
-        e.preventDefault();
+    handleSubmit = () => {
         const { saveArticle } = this.props;
         const data = { article: this.state.article };
         saveArticle(data.article);
@@ -64,7 +80,9 @@ class Create extends Component {
                   () => {
                       setTimeout(() => {
                           this.setState({ success: null }, () => {
-                              this.props.history.push(`/`);
+                              const { slug } = this.props.article.data.article;
+                              this.props.fetchArticle(slug);
+                              this.props.history.push(`/articles/${slug}`);
                           });
                       }, 1500);
                   }
@@ -79,14 +97,25 @@ class Create extends Component {
             : this.setState({ errors: this.state.errors });
     };
     render() {
+        const article = {
+            title: '',
+            description: '',
+            tags: [],
+            body: ''
+        };
         return (
             <ArticleForm
                 errors={this.state.errors}
                 handleChange={this.handleChange}
                 handleEditorChange={this.handleEditorChange}
                 handleTagsChange={this.handleTagsChange}
+                handleImageUpload={this.handleImageUpload}
                 handleSubmit={this.handleSubmit}
+                actionHeader="Create"
+                actionBtn="Publish"
+                article={article}
                 success={this.state.success}
+                loading={this.state.loading}
             />
         );
     }
@@ -99,6 +128,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
+            fetchArticle,
             saveArticle
         },
         dispatch

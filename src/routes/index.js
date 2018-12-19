@@ -11,8 +11,11 @@ import Read from '../containers/Article/Read';
 import ErrorHandler from '../components/ErrorHandler';
 import LogoutView from '../containers/Logout';
 import ResetPassword from '../containers/ResetPassword';
-import { PrivateRoute } from './protectedRoutes';
 import NavBar from '../containers/NavBar';
+import Update from '../containers/Article/Update';
+import NotFound from '../components/NotFound';
+import PrivateRoute from './protectedRoutes';
+import ArticleRatings from '../containers/Ratings';
 
 const AppRoutes = () => {
     return (
@@ -30,7 +33,11 @@ const AppRoutes = () => {
                         <Route exact path="/login" component={SignIn} />
                         <Route exact path="/signup" component={SignUp} />
                         <Route exact path="/logout" component={LogoutView} />
-                        <Route exact path="/resetpassword" component={ResetPassword} />
+                        <Route
+                            exact
+                            path="/resetpassword"
+                            component={ResetPassword}
+                        />
                         <PrivateRoute
                             exact
                             path="/articles/create"
@@ -41,6 +48,17 @@ const AppRoutes = () => {
                             exact
                             path="/profile"
                             component={Profile}
+                        />
+                        <PrivateRoute
+                            exact
+                            path="/articles/:slug/update"
+                            component={Update}
+                        />
+                        <Route exact path="/not_found" component={NotFound} />
+                        <Route
+                            exact
+                            path="/article/"
+                            component={ArticleRatings}
                         />
                     </Switch>
                 </div>

@@ -4,7 +4,8 @@ import {
     FETCH_USER_INFO_FAILURE,
     UPDATE_PROFILE,
     UPDATE_PROFILE_SUCCESS,
-    UPDATE_PROFILE_FAILURE
+    UPDATE_PROFILE_FAILURE,
+    USER_INFO_LOGOUT
 } from '../constants';
 
 //Declare the initial state
@@ -43,6 +44,10 @@ function userInfo(state = initialState, action) {
             };
         case UPDATE_PROFILE_FAILURE:
             return { ...state, fetching: false, errors: action.error };
+        case USER_INFO_LOGOUT:
+            return {
+                ...initialState
+            };
         default:
             return state;
     }

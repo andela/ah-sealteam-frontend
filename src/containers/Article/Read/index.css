@@ -1,0 +1,33 @@
+.tags {
+    padding: 8px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.edit {
+    font-size: 1.9em;
+    color: #4fce75;
+    display: inline;
+    margin-right: 30px;
+}
+
+.delete {
+    font-size: 1.9em;
+    color: #df3333;
+    display: inline;
+    padding-bottom: 11.5em;
+}
+
+.article-items {
+    display: inline-block;
+}
+
+.article-image {
+    width: 100%;
+    height: 28em;
+    border-radius: 9px;
+}
+
+.title {
+    font-weight: 600;
+}

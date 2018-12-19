@@ -24,6 +24,7 @@ const LandingPage = props => {
                                           id={item.slug}
                                           created_at={item.createdAt}
                                           key={item.slug}
+                                          slug={item.slug}
                                           title={item.title}
                                           tags={item.tags}
                                           description={item.description}
@@ -50,6 +51,8 @@ const LandingPage = props => {
                                               title={item.title}
                                               created_at={item.createdAt}
                                               tags={item.tags}
+                                              slug={item.slug}
+                                              image={item.image}
                                               description={item.description}
                                               read_time={item.read_time}
                                               author={item.author.username}

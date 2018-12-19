@@ -4,17 +4,22 @@ import allErrors from './SignUpReducer';
 import userAuth from './SigninReducer';
 import articleCRD from './articleReducer';
 import resetPasswordReducer from './resetPasswordReducer';
+import BookMarkArticleReducer from './bookmark.reducer';
 import allArticles from './ViewArticlesReducer';
 import userInfo from './ProfileReducer';
 
 import notificationsReducer from './notificationsReducer';
+import ratingsReducer from './ratings.reducer';
+
 export default combineReducers({
     social: SocialAuthReducer,
     allErrors,
     allArticles,
     userAuth,
     resetPasswordReducer,
-    userInfo,
     notificationsReducer,
-    articleCRD
+    userInfo,
+    articleCRD,
+    bookmarks: BookMarkArticleReducer,
+    ratingsReducer
 });

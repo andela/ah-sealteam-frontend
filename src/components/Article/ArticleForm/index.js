@@ -3,6 +3,8 @@ import ReactQuill from 'react-quill';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import 'react-quill/dist/quill.snow.css';
 import './index.css';
+import Loader from 'react-dots-loader';
+import 'react-dots-loader/index.css';
 
 export default class ArticleForm extends Component {
     editorModules = {
@@ -18,7 +20,7 @@ export default class ArticleForm extends Component {
             [{ color: [] }],
             [{ font: [] }],
             [{ align: [] }],
-            ['link', 'image'],
+            ['link'],
             ['clean']
         ]
     };
@@ -31,10 +33,14 @@ export default class ArticleForm extends Component {
             bodyError = this.props.errors.body[0];
             tagsError = this.props.errors.tags[0];
         }
+
+        const { title, description, body, tags } = this.props.article;
         return (
-            <div className="row justify-content-center mt-4">
+            <div className="row justify-content-center mt-5">
                 <div className="col-md-8">
-                    <h3 className="text-center">Create Article</h3>
+                    <h3 className="text-center">
+                        {this.props.actionHeader} Article
+                    </h3>
                     <div className="form">
                         <div className="form-group">
                             <label htmlFor="title">Title</label>
@@ -42,6 +48,7 @@ export default class ArticleForm extends Component {
                                 type="text"
                                 name="title"
                                 id="title"
+                                defaultValue={title}
                                 className="form-control"
                                 onChange={this.props.handleChange}
                             />
@@ -55,6 +62,7 @@ export default class ArticleForm extends Component {
                                 type="text"
                                 name="description"
                                 id="description"
+                                defaultValue={description}
                                 className="form-control"
                                 onChange={this.props.handleChange}
                             />
@@ -68,6 +76,7 @@ export default class ArticleForm extends Component {
                                 modules={this.editorModules}
                                 name="body"
                                 theme="snow"
+                                defaultValue={body}
                                 className="quill-height article-body"
                                 onChange={this.props.handleEditorChange}
                                 placeholder="Write Something...,"
@@ -82,6 +91,7 @@ export default class ArticleForm extends Component {
                                 type="text"
                                 name="tags"
                                 id="tags"
+                                defaultValue={tags}
                                 className="form-control"
                                 placeholder="tag1, tag2, tag3"
                                 onChange={this.props.handleTagsChange}
@@ -90,21 +100,42 @@ export default class ArticleForm extends Component {
                                 <h6>{tagsError}</h6>
                             </span>
                         </div>
+                        <div className="form-group">
+                            <label htmlFor="article-image">
+                                <input
+                                    type="file"
+                                    id="article-image"
+                                    name="image"
+                                    className="d-none"
+                                    accept="image/*"
+                                    onChange={this.props.handleImageUpload}
+                                />
+                                <span className="btn btn-light capitalize">
+                                    {this.props.loading ? (
+                                        <Loader size={10} distance={31} />
+                                    ) : (
+                                        'Upload Image'
+                                    )}
+                                </span>
+                            </label>
+                        </div>
                         {this.props.success ? (
-                            <SweetAlert
-                                success
-                                title="Successfully published your article."
-                            />
+                            <SweetAlert success title={this.props.success} />
                         ) : (
                             ''
                         )}
                         <div className="form-group">
                             <button
                                 type="submit"
-                                className="btn btn-primary btn-block"
-                                onClick={this.props.handleSubmit}
+                                className="btn btn-primary btn-block capitalize"
+                                onClick={() => {
+                                    this.props.handleSubmit();
+                                    setTimeout(() => {
+                                        this.props.handleSubmit();
+                                    }, 500);
+                                }}
                             >
-                                Publish Article
+                                {this.props.actionBtn} Article
                             </button>
                         </div>
                     </div>
