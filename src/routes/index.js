@@ -16,7 +16,7 @@ const AppRoutes = () => {
     return (
         <BrowserRouter>
             <Router history={history}>
-                <div>
+                <div className="container">
                     <Switch>
                         <Route exact path="/" component={AllArticles} />
                         <Route
@@ -27,7 +27,11 @@ const AppRoutes = () => {
                         <Route exact path="/login" component={SignIn} />
                         <Route exact path="/signup" component={SignUp} />
                         <Route exact path="/logout" component={LogoutView} />
-                        <Route exact path="/resetpassword" component={ResetPassword} />
+                        <Route
+                            exact
+                            path="/resetpassword"
+                            component={ResetPassword}
+                        />
                         <PrivateRoute
                             exact
                             path="/articles/create"
@@ -39,6 +43,6 @@ const AppRoutes = () => {
             </Router>
         </BrowserRouter>
     );
-}
+};
 
 export default AppRoutes;

@@ -43,4 +43,35 @@ describe('Article reducer', () => {
             errors: 'This is a mock error'
         });
     });
+    it('should handle GET_ARTICLE', () => {
+        expect(
+            articleCRD(initialState, {
+                type: types.GET_ARTICLE
+            })
+        ).toEqual({
+            ...initialState,
+            fetching: true
+        });
+
+        expect(
+            articleCRD(initialState, {
+                type: types.GET_ARTICLE_SUCCESS,
+                result: { success: true }
+            })
+        ).toEqual({
+            ...initialState,
+            fetched: true,
+            data: { success: true }
+        });
+
+        expect(
+            articleCRD(initialState, {
+                type: types.GET_ARTICLE_FAILURE,
+                errors: 'This is a mock error'
+            })
+        ).toEqual({
+            ...initialState,
+            errors: 'This is a mock error'
+        });
+    });
 });

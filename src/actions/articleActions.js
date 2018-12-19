@@ -18,6 +18,20 @@ export const createArticleFailure = errors => ({
     errors
 });
 
+export const getArticle = () => ({
+    type: types.GET_ARTICLE
+});
+
+export const getArticleSuccess = result => ({
+    type: types.GET_ARTICLE_SUCCESS,
+    result
+});
+
+export const getArticleFailure = errors => ({
+    type: types.GET_ARTICLE_FAILURE,
+    errors
+});
+
 export const saveArticle = data => dispatch => {
     const headers = {
         Authorization: `Bearer ${token}`,
@@ -30,4 +44,16 @@ export const saveArticle = data => dispatch => {
         })
         .then(response => dispatch(createArticleSuccess(response.data)))
         .catch(err => dispatch(createArticleFailure(err.response)));
+};
+
+export const fetchArticle = slug => dispatch => {
+    dispatch(getArticle());
+    axios
+        .get(`${types.BASE_URL}articles/${slug}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(response => dispatch(getArticleSuccess(response.data)))
+        .catch(err => {
+            dispatch(getArticleFailure(err.response));
+        });
 };
