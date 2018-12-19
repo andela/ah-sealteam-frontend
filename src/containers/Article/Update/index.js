@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { saveArticle, fetchArticle } from '../../../actions/articleActions';
 import { connect } from 'react-redux';
+import { updateArticle, fetchArticle } from '../../../actions/articleActions';
 import ArticleForm from '../../../components/Article/ArticleForm';
 import uploadToCloudinary from '../../../utils/cloudinary';
 
-class Create extends Component {
+class Update extends Component {
     state = {
         article: {
             title: '',
@@ -21,16 +21,16 @@ class Create extends Component {
             tags: [''],
             body: ['']
         },
-        defaultErr: {
-            title: [''],
-            description: [''],
-            tags: [''],
-            body: ['']
-        },
         success: null,
         file: null,
-        loading: null
+        loading: false
     };
+
+    componentDidMount() {
+        const { slug } = this.props.match.params;
+        this.props.fetchArticle(slug);
+        this.setState({ article: { ...this.props.article.data } });
+    }
 
     handleImageUpload = e => {
         const imageUrl = e.target.files[0];
@@ -75,18 +75,19 @@ class Create extends Component {
         });
     };
     handleSubmit = () => {
-        const { saveArticle } = this.props;
+        const { slug } = this.props.match.params;
+        const { updateArticle } = this.props;
         const data = { article: this.state.article };
-        saveArticle(data.article);
-        this.props.article.data.article
+        updateArticle(slug, data.article);
+        this.props.article.updated
             ? this.setState(
                   {
-                      success: 'Successfully Published your article'
+                      success: 'Successfully Updated your article'
                   },
                   () => {
                       setTimeout(() => {
                           this.setState({ success: null }, () => {
-                              const { slug } = this.props.article.data.article;
+                              const { slug } = this.props.match.params;
                               this.props.fetchArticle(slug);
                               this.props.history.push(`/articles/${slug}`);
                           });
@@ -96,33 +97,37 @@ class Create extends Component {
             : this.props.article.errors
             ? this.setState({
                   errors: {
-                      ...this.state.defaultErr,
-                      ...this.props.article.errors.data.article
+                      ...this.state.errors,
+                      ...this.props.article.errors.data.errors
                   }
               })
             : this.setState({ errors: this.state.errors });
     };
+
     render() {
-        const article = {
-            title: '',
-            description: '',
-            tags: [],
-            body: ''
-        };
-        return (
-            <ArticleForm
-                errors={this.state.errors}
-                handleChange={this.handleChange}
-                handleEditorChange={this.handleEditorChange}
-                handleTagsChange={this.handleTagsChange}
-                handleImageUpload={this.handleImageUpload}
-                handleSubmit={this.handleSubmit}
-                actionHeader="Create"
-                actionBtn="Publish"
-                article={article}
-                success={this.state.success}
-                loading={this.state.loading}
-            />
+        if (this.props.article.errors) {
+            if (this.props.article.errors.status === 404) {
+                this.props.history.push('/not_found');
+            }
+        }
+        return this.props.article.fetched ? (
+            <div>
+                <ArticleForm
+                    errors={this.state.errors}
+                    handleChange={this.handleChange}
+                    handleEditorChange={this.handleEditorChange}
+                    handleTagsChange={this.handleTagsChange}
+                    handleSubmit={this.handleSubmit}
+                    handleImageUpload={this.handleImageUpload}
+                    actionHeader="Edit"
+                    actionBtn="Update"
+                    loading={this.state.loading}
+                    article={this.props.article.data}
+                    success={this.state.success}
+                />
+            </div>
+        ) : (
+            'Loading...'
         );
     }
 }
@@ -134,8 +139,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
-            fetchArticle,
-            saveArticle
+            updateArticle,
+            fetchArticle
         },
         dispatch
     );
@@ -143,4 +148,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Create);
+)(Update);

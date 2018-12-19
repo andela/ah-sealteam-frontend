@@ -5,7 +5,6 @@ import 'font-awesome/css/font-awesome.min.css';
 import '../Profile/index.css';
 import ProfileUpdate from './ProfileUpdate';
 import { bindActionCreators } from 'redux';
-// import Loader from '../../components/Profile';
 import uploadToCloudinary from '../../utils/cloudinary';
 import BookMark from '../BookMark';
 import Loader from 'react-dots-loader';

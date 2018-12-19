@@ -1,7 +1,14 @@
 import React from 'react';
 import image from '../../assets/images/andela.png';
 
-const latestarticles = ({ title, tags, read_time, description }) => {
+const latestarticles = ({
+    image,
+    slug,
+    title,
+    tags,
+    read_time,
+    description
+}) => {
     return (
         <div className="col-xs-6 col-sm-6 col-lg-3 Card">
             <div className="card-header ">{tags}</div>
@@ -18,7 +25,10 @@ const latestarticles = ({ title, tags, read_time, description }) => {
                         <div className="card-body">
                             <h5 className="card-title">{title}</h5>
                             <p className="card-text">{description}</p>
-                            <a href="/" className="form-button">
+                            <a
+                                href={`/articles/${slug}`}
+                                className="form-button"
+                            >
                                 Read More
                             </a>
                         </div>

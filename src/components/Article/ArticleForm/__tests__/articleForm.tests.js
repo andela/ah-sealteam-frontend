@@ -8,11 +8,18 @@ Enzyme.configure({ adapter: new Adapter() });
 function setup() {
     const props = {
         saveArticle: jest.fn(),
+        handleSubmit: jest.fn(),
         article: {
             title: '',
             description: '',
             tags: [],
             body: ''
+        },
+        updateArticle: {
+            title: 'samople',
+            description: 'sample',
+            tags: ['tag1'],
+            body: 'vis atque dignitas'
         },
         validation: {},
         errors: {

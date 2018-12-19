@@ -1,20 +1,25 @@
 import React from 'react';
 import hdate from 'human-date';
+import { Link } from 'react-router-dom';
 
-const Mainarticles = ({ title, tags, description, created_at, author }) => {
+const Mainarticles = ({
+    title,
+    slug,
+    image,
+    tags,
+    description,
+    created_at,
+    author
+}) => {
     return (
         <div>
             <div className="row">
                 <div className="col-lg-5 col-xl-4">
                     <div className="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
-                        <img
-                            className="img-fluid"
-                            src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg"
-                            alt="Sample"
-                        />
-                        <a href="/">
+                        <img className="img-fluid" src={image} alt="Sample" />
+                        <Link to={`/articles/${slug}`}>
                             <div className="mask rgba-white-slight" />
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div className="col-lg-7 col-xl-8">
@@ -33,9 +38,12 @@ const Mainarticles = ({ title, tags, description, created_at, author }) => {
                         </a>
                         , {hdate.relativeTime(created_at)}
                     </p>
-                    <a href="/" className="btn btn-rounded article-button">
+                    <Link
+                        to={`/articles/${slug}`}
+                        className="btn btn-rounded article-button"
+                    >
                         Read more
-                    </a>
+                    </Link>
                 </div>
             </div>
             <hr className="my-5" />
