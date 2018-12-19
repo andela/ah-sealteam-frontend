@@ -5,8 +5,9 @@ import 'font-awesome/css/font-awesome.min.css';
 import '../Profile/index.css';
 import ProfileUpdate from './ProfileUpdate';
 import { bindActionCreators } from 'redux';
-import Loader from '../../components/Profile';
 import uploadToCloudinary from '../../utils/cloudinary';
+import Loader from 'react-dots-loader';
+import 'react-dots-loader/index.css';
 
 class Profile extends Component {
     state = {
@@ -50,7 +51,7 @@ class Profile extends Component {
         const { data, fetching, fetched } = this.props.profile;
         const info = (
             <React.Fragment>
-                <div className="container-all">
+                <div className="container">
                     <div className="row mt-4">
                         {/* {Profile image Start} */}
                         <div className="col-md-4 mt-4">
