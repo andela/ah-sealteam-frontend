@@ -5,6 +5,8 @@ import {
     LOGGED_SUCCESSFULLY
 } from '../constants';
 
+import { isAuthenticated } from '../services';
+const token = isAuthenticated();
 const initialState = {
     isLoggedIn: false,
     isLoggingIn: false,
@@ -12,7 +14,20 @@ const initialState = {
     failed: false
 };
 
-export const userAuth = (state = { ...initialState }, action) => {
+const loginState = (token, initialState) => {
+    if (token) {
+        initialState.isLoggedIn = true;
+        return initialState;
+    } else {
+        initialState.isLoggedIn = false;
+        return initialState;
+    }
+};
+
+export const userAuth = (
+    state = { ...loginState(token, initialState) },
+    action
+) => {
     switch (action.type) {
         case LOGIN_ATTEMPT:
             return {
@@ -38,7 +53,8 @@ export const userAuth = (state = { ...initialState }, action) => {
             };
         case LOGOUT:
             return {
-                ...initialState
+                ...state,
+                isLoggedIn: false
             };
         default:
             return state;

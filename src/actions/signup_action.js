@@ -1,9 +1,9 @@
 import axios from 'axios';
 import {
-  BASE_URL,
-  USER_SIGNUP,
-  USER_SIGNUP_ERROR,
-  USER_SIGNUP_SUCCESS
+    BASE_URL,
+    USER_SIGNUP,
+    USER_SIGNUP_ERROR,
+    USER_SIGNUP_SUCCESS
 } from '../constants';
 import swal from 'sweetalert';
 import { history } from '../history';

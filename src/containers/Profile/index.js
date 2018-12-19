@@ -50,7 +50,7 @@ class Profile extends Component {
         const { data, fetching, fetched } = this.props.profile;
         const info = (
             <React.Fragment>
-                <div className="container">
+                <div className="container-all">
                     <div className="row mt-4">
                         {/* {Profile image Start} */}
                         <div className="col-md-4 mt-4">

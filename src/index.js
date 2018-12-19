@@ -6,12 +6,15 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import AppRoutes from './routes';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faIgloo, faBell } from '@fortawesome/free-solid-svg-icons';
 
+library.add(faIgloo, faBell);
 ReactDOM.render(
-  <Provider store={store}>
-    <AppRoutes />
-  </Provider>,
-  document.getElementById('root')
+    <Provider store={store}>
+        <AppRoutes />
+    </Provider>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

@@ -2,7 +2,9 @@
   width: 180px;
   height: 180px;
 }
-
+.container-all {
+  padding-top: 30px;
+}
 .pencil,
 .circle {
   font-size: 20px;

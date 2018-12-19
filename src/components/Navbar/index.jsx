@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import 'bootstrap';
+import './navbar.scss';
 
 const Navbar = props => {
+    const { Notifications, isLoggedIn } = props;
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div className="container">
@@ -34,37 +38,67 @@ const Navbar = props => {
                     className="collapse navbar-collapse"
                     id="navbarSupportedContent"
                 >
-                    {props.user ? (
-                        <ul className="navbar-nav ml-auto topnav navUl">
-                            <li className="nav-item">
-                                <NavLink
-                                    onClick={() => props.logout()}
-                                    className="nav-link"
-                                    to="/"
-                                >
-                                    Logout
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/">
-                                    <i className="fas fa-user" />
-                                </NavLink>
-                            </li>
-                        </ul>
-                    ) : (
-                        <ul className="navbar-nav ml-auto topnav navUl">
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/signup">
-                                    Signup
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/login">
-                                    Login
-                                </NavLink>
-                            </li>
-                        </ul>
-                    )}
+                    <div className="search-div">
+                        <input type="text" placeholder="Search..." />
+                        <div className="search" />
+                    </div>
+                    <ul className="navbar-nav ml-auto topnav top-nav">
+                        {isLoggedIn ? (
+                            <Fragment>
+                                <li className="nav-item dropdown">
+                                    <NavLink
+                                        className="nav-link"
+                                        id="dropdownMenuButton"
+                                        role="button"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                        to="#"
+                                    >
+                                        <FontAwesomeIcon
+                                            icon="bell"
+                                            className="icon-bell"
+                                        />
+                                        <span className="button__badge">
+                                            {props.unreadCount}
+                                        </span>
+                                    </NavLink>
+                                    <Notifications />
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink
+                                        className="nav-link "
+                                        to="/article/create"
+                                    >
+                                        NEW STORY
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/profile">
+                                        PROFILE
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/logout">
+                                        LOGOUT
+                                    </NavLink>
+                                </li>
+                            </Fragment>
+                        ) : (
+                            <Fragment>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/signup">
+                                        Signup
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/login">
+                                        Login
+                                    </NavLink>
+                                </li>
+                            </Fragment>
+                        )}
+                    </ul>
                 </div>
             </div>
         </nav>
