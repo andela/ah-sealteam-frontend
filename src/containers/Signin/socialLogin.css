@@ -1,0 +1,28 @@
+.btn-circle.btn-lg {
+  width: 40px;
+  height: 40px;
+  padding: 8px 12px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  margin: 13px 12px 12px 10px;
+}
+
+.btn-circle.twitter {
+  background-color: #38a1f3;
+  color: white;
+}
+
+.btn-circle.github {
+  background-color: black;
+  color: white;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
