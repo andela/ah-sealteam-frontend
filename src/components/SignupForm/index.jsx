@@ -8,26 +8,32 @@ import PasswordField from '../InputFields/password_input_field';
 import ConfirmPasswordField from '../InputFields/confirm_password_input_field';
 
 const SignupForm = props => {
-  return (
-    <form className="myForm" data-toggle="validator" onSubmit={props.submit}>
-      {props.loading === true ? <Loader /> : ''}
-      <h3 className="form-title">{title}</h3>
-      <UsernameField usernameError={props.usernameError} />
-      <EmailField emailError={props.emailError} />
-      <PasswordField passError={props.passError} />
-      <ConfirmPasswordField confirmpasswordError={props.confirmpasswordError} />
-      <button className="form-button">Register</button>
-      <br />
-      <div className="test">
-        <p>
-          {account}{' '}
-          <Link to="/login" className="txt1">
-            {login}
-          </Link>
-        </p>
-      </div>
-    </form>
-  );
+    return (
+        <form
+            className="myForm"
+            data-toggle="validator"
+            onSubmit={props.submit}
+        >
+            {props.loading === true ? <Loader /> : ''}
+            <h3 className="form-title">{title}</h3>
+            <UsernameField usernameError={props.usernameError} />
+            <EmailField emailError={props.emailError} />
+            <PasswordField passError={props.passError} />
+            <ConfirmPasswordField
+                confirmpasswordError={props.confirmpasswordError}
+            />
+            <button className="form-button">Register</button>
+            <br />
+            <div className="test">
+                <p>
+                    {account}{' '}
+                    <Link to="/login" className="txt1">
+                        {login}
+                    </Link>
+                </p>
+            </div>
+        </form>
+    );
 };
 
 export default SignupForm;

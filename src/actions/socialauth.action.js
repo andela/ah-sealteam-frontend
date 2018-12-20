@@ -5,6 +5,7 @@ import {
     SOCIALLOGIN_PENDING,
     SOCIALLOGIN_FAILED
 } from '../constants';
+import { loginSuccess } from './signin.actions';
 
 export const socialSuccess = userData => ({
     type: SOCIALLOGIN_FULFILLED,
@@ -31,6 +32,9 @@ export const socialLogin = (url, socialtoken) => dispatch => {
         .post(url, {
             access_token: socialtoken
         })
-        .then(response => dispatch(socialSuccess(response.data)))
+        .then(response => {
+            dispatch(socialSuccess(response.data));
+            dispatch(loginSuccess(response));
+        })
         .catch(() => dispatch(socialFailed()));
 };

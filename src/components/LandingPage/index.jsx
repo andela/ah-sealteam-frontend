@@ -1,17 +1,16 @@
 import React from 'react';
-import Navbar from '../Navbar';
+// import Navbar from '../Navbar';
 import Header from './header';
 import Latestarticles from './latestarticles';
 import Mainarticles from './mainarticles';
 import Sidebar from './sidebar';
-import userService from '../../services/login.service';
+// import userService from '../../services/login.service';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const LandingPage = props => {
     let user = localStorage.getItem('user');
     return (
         <React.Fragment>
-            <Navbar user={user} logout={userService.logout} />
             <Header />
 
             <div className="container-fluid latest-articles">

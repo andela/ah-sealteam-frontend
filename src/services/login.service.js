@@ -20,3 +20,6 @@ export const userService = {
 };
 
 export default userService;
+export const isAuthenticated = () => {
+    return localStorage.getItem('user');
+};

@@ -6,11 +6,13 @@ import resetPasswordReducer from './resetPasswordReducer';
 import allArticles from './ViewArticlesReducer';
 import userInfo from './ProfileReducer';
 
+import notificationsReducer from './notificationsReducer';
 export default combineReducers({
     social: SocialAuthReducer,
     allErrors,
     allArticles,
     userAuth,
     resetPasswordReducer,
-    userInfo
+    userInfo,
+    notificationsReducer
 });

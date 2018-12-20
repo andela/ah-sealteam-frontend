@@ -10,12 +10,14 @@ import ErrorHandler from '../components/ErrorHandler';
 import LogoutView from '../containers/Logout';
 import ResetPassword from '../containers/ResetPassword';
 import { PrivateRoute } from './protectedRoutes';
+import NavBar from '../containers/NavBar';
 
 const AppRoutes = () => {
     return (
         <BrowserRouter>
             <Router history={history}>
-                <div className="container">
+                <div class="container">
+                    <NavBar />
                     <Switch>
                         <Route exact path="/" component={ViewArticles} />
                         <Route

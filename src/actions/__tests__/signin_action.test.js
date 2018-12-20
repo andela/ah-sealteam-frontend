@@ -1,6 +1,5 @@
 import {
   LOGIN_ATTEMPT,
-  LOGOUT,
   LOGGED_FAILED,
   LOGGED_SUCCESSFULLY
 } from '../../constants';

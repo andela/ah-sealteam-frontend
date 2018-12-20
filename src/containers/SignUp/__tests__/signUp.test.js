@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Signup from '../SignUp/index';
+import Signup from '../index';
 import configureStore from 'redux-mock-store';
 import { shallow } from 'enzyme';
 

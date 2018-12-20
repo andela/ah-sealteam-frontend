@@ -1,6 +1,6 @@
 import React from 'react';
 import configureStore from 'redux-mock-store';
-import ConnectedSignin from '../Signin/index';
+import ConnectedSignin from '../index';
 
 describe('<SignIn />', () => {
     const initialState = {
