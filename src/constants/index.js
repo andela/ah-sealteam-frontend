@@ -51,6 +51,7 @@ export const UPDATE_PROFILE_FAILURE = 'UPDATE_PROFILE_FAILURE';
 export const CLOUDINARY_URL =
     'https://api.cloudinary.com/v1_1/botnetdobbs/image/upload';
 export const CLOUDINARY_UPLOAD_PRESET = 'ind3ojf2';
+
 // Notifications Constants
 export const MARK_AS_READ_BEGIN = 'MARK_AS_READ_BEGIN';
 export const MARK_AS_READ_SUCCESS = 'MARK_AS_READ_SUCCESS';
@@ -62,3 +63,6 @@ export const GET_UNREAD_NOTIFICATIONS_SUCCESS =
 export const GET_ALL_NOTIFICATIONS_SUCCESS = 'GET_ALL_NOTIFICATIONS_SUCCESS';
 export const GET_ALL_NOTIFICATIONS_BEGIN = 'GET_ALL_NOTIFICATIONS_BEGIN';
 export const NOTIFICATION_ERROR = 'NOTIFICATION_ERROR';
+
+// Page count
+export const PER_PAGE = 10;

@@ -10,9 +10,10 @@ export const fetchArticlesSuccess = articles => ({
     articles
 });
 
-const getAllArticles = () => dispatch => {
+const getAllArticles = (page = null) => dispatch => {
+    dispatch(fetchArticles());
     articlesService
-        .getArticles()
+        .getArticles(page)
         .then(res => dispatch(fetchArticlesSuccess(res.data)))
         .catch(e => console.log(e));
 };

@@ -16,7 +16,7 @@ const AppRoutes = () => {
     return (
         <BrowserRouter>
             <Router history={history}>
-                <div class="container">
+                <div>
                     <NavBar />
                     <Switch>
                         <Route exact path="/" component={ViewArticles} />
@@ -44,4 +44,5 @@ const AppRoutes = () => {
         </BrowserRouter>
     );
 };
+
 export default AppRoutes;
