@@ -1,8 +1,11 @@
-import { BASE_URL } from '../constants';
 import axios from 'axios';
+import { BASE_URL } from '../constants';
 
-export const getArticles = () => {
-    const url = `${BASE_URL}articles`;
+export const getArticles = page => {
+    let url = `${BASE_URL}articles`;
+    if (page) {
+        url = url + `?page=${page}`;
+    }
 
     return axios.get(url);
 };

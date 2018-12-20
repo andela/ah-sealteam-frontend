@@ -2,7 +2,7 @@ import { FETCH_ARTICLES, FETCH_ARTICLES_SUCCESS } from '../constants';
 
 const initialState = {
     articles: [],
-    loading: false
+    isFetching: false
 };
 
 const allArticles = (state = initialState, action) => {
@@ -10,12 +10,12 @@ const allArticles = (state = initialState, action) => {
         case FETCH_ARTICLES:
             return {
                 ...state,
-                loading: true
+                isFetching: true
             };
         case FETCH_ARTICLES_SUCCESS:
             return {
                 ...state,
-                loading: false,
+                isFetching: false,
                 articles: action.articles
             };
         default:

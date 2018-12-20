@@ -1,4 +1,5 @@
 import React from 'react';
+import hdate from 'human-date';
 
 const Mainarticles = ({ title, tags, description, created_at, author }) => {
     return (
@@ -30,7 +31,7 @@ const Mainarticles = ({ title, tags, description, created_at, author }) => {
                         <a href="/" className="font-weight-bold">
                             {author}
                         </a>
-                        , {created_at}
+                        , {hdate.relativeTime(created_at)}
                     </p>
                     <a href="/" className="btn btn-rounded article-button">
                         Read more
