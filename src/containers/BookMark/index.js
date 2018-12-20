@@ -29,7 +29,7 @@ export class BookMark extends Component {
     };
 
     render() {
-        let articleList = [];
+        let articleList = '';
         let count = 0;
         const { articles, errors, pending } = this.props.articles;
         if (errors) {
@@ -42,11 +42,7 @@ export class BookMark extends Component {
             ));
         } else {
             if (articles.count === 0) {
-                swal(
-                    'Not found!!',
-                    'It seams you have not bookmarked articles!',
-                    'warning'
-                );
+                articleList = 'You have not bookmarked articles yet';
             }
         }
         return (

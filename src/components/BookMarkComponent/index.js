@@ -1,7 +1,11 @@
 import React from 'react';
 import hdate from 'human-date';
 import 'bootstrap';
+import { Link } from 'react-router-dom';
+
 const BookMarkComp = (article, i) => {
+    const article_url = `/article/${article.article.article_slug}`;
+    const user_url = `/profiles/${article.article.article_author}`;
     return (
         <div key={i}>
             <div className="row">
@@ -19,23 +23,28 @@ const BookMarkComp = (article, i) => {
                 </div>
                 <div className="col-lg-7 col-xl-8">
                     <h3 className="font-weight-bold mb-3">
-                        <strong>{article.article.article_name}</strong>
+                        <strong>{article.article.article_title}</strong>
                         <i
                             className="fa fa-bookmark article-icon"
                             aria-hidden="true"
                         />
                     </h3>
-                    <p className="dark-grey-text">{article.description}</p>
+                    <p className="dark-grey-text">
+                        {article.article.article_description}
+                    </p>
                     <p>
                         by{' '}
-                        <a href="/" className="font-weight-bold">
-                            {article.article.author}
-                        </a>
+                        <Link to={user_url} className="font-weight-bold">
+                            {article.article.article_author}
+                        </Link>
                         , {hdate.relativeTime(article.article.created_at)}
                     </p>
-                    <a href="/" className="btn btn-rounded article-button">
+                    <Link
+                        to={article_url}
+                        className="btn btn-rounded article-button"
+                    >
                         Read more
-                    </a>
+                    </Link>
                 </div>
             </div>
             <hr className="my-5" />

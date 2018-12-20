@@ -5,7 +5,7 @@ const Tabs = props => (
         <div className="container">
             <h6 className="section-title h1">Tabs</h6>
             <div className="row">
-                <div className="col-xs-12 ">
+                <div className="col-xs-12 w-100">
                     <nav>
                         <div
                             className="nav nav-tabs nav-fill"
@@ -14,44 +14,44 @@ const Tabs = props => (
                         >
                             <a
                                 className="nav-item nav-link active"
-                                id="nav-home-tab"
+                                id="nav-bookmark-tab"
                                 data-toggle="tab"
-                                href="#nav-home"
+                                href="#nav-bookmark"
                                 role="tab"
-                                aria-controls="nav-home"
+                                aria-controls="nav-bookmark-home"
                                 aria-selected="true"
                             >
                                 BookMarks
                             </a>
                             <a
                                 className="nav-item nav-link"
-                                id="nav-profile-tab"
+                                id="nav-publish-tab"
                                 data-toggle="tab"
-                                href="#nav-profile"
+                                href="#nav-publish"
                                 role="tab"
-                                aria-controls="nav-profile"
+                                aria-controls="nav-publish"
                                 aria-selected="false"
                             >
                                 Published
                             </a>
                             <a
                                 className="nav-item nav-link"
-                                id="nav-contact-tab"
+                                id="nav-reads-tab"
                                 data-toggle="tab"
-                                href="#nav-contact"
+                                href="#nav-reads"
                                 role="tab"
-                                aria-controls="nav-contact"
+                                aria-controls="nav-reads"
                                 aria-selected="false"
                             >
                                 My reads
                             </a>
                             <a
                                 className="nav-item nav-link"
-                                id="nav-about-tab"
+                                id="nav-favorite-tab"
                                 data-toggle="tab"
-                                href="#nav-about"
+                                href="#nav-favorite"
                                 role="tab"
-                                aria-controls="nav-about"
+                                aria-controls="nav-favorite"
                                 aria-selected="false"
                             >
                                 Favorites
@@ -64,17 +64,25 @@ const Tabs = props => (
                     >
                         <div
                             className="tab-pane fade show active"
-                            id="nav-home"
+                            id="nav-bookmark"
                             role="tabpanel"
-                            aria-labelledby="nav-home-tab"
+                            aria-labelledby="nav-bookmark-tab"
                         >
                             <div className="p-3">{props.bookmarks}</div>
                         </div>
                         <div
                             className="tab-pane fade"
-                            id="nav-profile"
+                            id="nav-publish"
                             role="tabpanel"
-                            aria-labelledby="nav-profile-tab"
+                            aria-labelledby="nav-publish-tab"
+                        >
+                            <p>Thias are published</p>
+                        </div>
+                        <div
+                            className="tab-pane fade"
+                            id="nav-reads"
+                            role="tabpanel"
+                            aria-labelledby="nav-reads-tab"
                         >
                             Et et consectetur ipsum labore excepteur est
                             proident excepteur ad velit occaecat qui minim
@@ -91,28 +99,9 @@ const Tabs = props => (
                         </div>
                         <div
                             className="tab-pane fade"
-                            id="nav-contact"
+                            id="nav-favorite"
                             role="tabpanel"
-                            aria-labelledby="nav-contact-tab"
-                        >
-                            Et et consectetur ipsum labore excepteur est
-                            proident excepteur ad velit occaecat qui minim
-                            occaecat veniam. Fugiat veniam incididunt anim
-                            aliqua enim pariatur veniam sunt est aute sit dolor
-                            anim. Velit non irure adipisicing aliqua ullamco
-                            irure incididunt irure non esse consectetur nostrud
-                            minim non minim occaecat. Amet duis do nisi duis
-                            veniam non est eiusmod tempor incididunt tempor
-                            dolor ipsum in qui sit. Exercitation mollit sit
-                            culpa nisi culpa non adipisicing reprehenderit do
-                            dolore. Duis reprehenderit occaecat anim ullamco ad
-                            duis occaecat ex.
-                        </div>
-                        <div
-                            className="tab-pane fade"
-                            id="nav-about"
-                            role="tabpanel"
-                            aria-labelledby="nav-about-tab"
+                            aria-labelledby="nav-favorite-tab"
                         >
                             Et et consectetur ipsum labore excepteur est
                             proident excepteur ad velit occaecat qui minim

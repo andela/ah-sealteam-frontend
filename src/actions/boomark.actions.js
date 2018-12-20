@@ -1,5 +1,6 @@
 import axiosFetch from 'axios';
 import {
+    BOOKMARK_LOGOUT,
     BOOKMARK_PENDING,
     BOOMARK_FAILED,
     BOOMARK_FULFILLED
@@ -14,6 +15,9 @@ export const getBookMarkSuccess = articles => ({
     payload: articles
 });
 
+export const bookmarkLogout = () => ({
+    type: BOOKMARK_LOGOUT
+});
 export const startPending = () => ({
     type: BOOKMARK_PENDING
 });

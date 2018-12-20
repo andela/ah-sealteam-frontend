@@ -25,7 +25,8 @@ const BookMarkArticleReducer = (state = { ...initialState }, action) => {
         case BOOMARK_FAILED:
             return {
                 ...state,
-                errors: action.errors
+                errors: action.errors,
+                pending: false
             };
         case BOOKMARK_PENDING:
             return {
