@@ -34,6 +34,7 @@
         "prop-types": "^15.6.2",
         "react": "^16.6.3",
         "react-dom": "^16.6.3",
+        "react-dots-loader": "^1.1.4",
         "react-js-pagination": "^3.0.2",
         "react-materialize": "^2.6.0",
         "react-redux": "^5.1.1",
