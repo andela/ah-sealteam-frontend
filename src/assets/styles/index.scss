@@ -1,8 +1,9 @@
 @mixin mobile {
-    @media (max-width: 600px) {
+    @media (max-width: 1120px) {
         @content
     }
 }
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -23,7 +24,6 @@ body {
     color: #333;
     font-size: 13px;
     margin: 0;
-    /*background-color: #f6f1ed;*/
 }
 
 .form-image {
@@ -836,7 +836,7 @@ body {
 
 .card-img-top{
     width:100%;
-    height:auto;
+    height:100%;
 }
 
 .second-container {
@@ -860,6 +860,9 @@ body {
     float: left;
     color: white;
     margin: 50px;
+    @include mobile {
+        display: none
+    }
 }
 #clear {
     clear: both;
