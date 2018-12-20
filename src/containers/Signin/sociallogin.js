@@ -30,7 +30,7 @@ export class Social extends Component {
     };
 
     handleSocialLoginFailure = err => {
-        swal('Error!', 'Social login was rejected!', 'error');
+        swal('Error!', 'Something happened! Try reloading the page', 'error');
     };
 
     login = user => {

@@ -1,4 +1,4 @@
-//Base URL
+// Domain envars
 export const DOMAIN = process.env.REACT_APP_DOMAIN;
 export const BASE_URL = `${DOMAIN}/api/`;
 //Sign Up Constants
@@ -66,3 +66,9 @@ export const NOTIFICATION_ERROR = 'NOTIFICATION_ERROR';
 
 // Page count
 export const PER_PAGE = 10;
+
+//BOOKMARK
+export const BOOMARK_FULFILLED = 'BOOMARK_FULFILLED';
+export const BOOMARK_FAILED = 'BOOMARK_FAILED';
+export const BOOKMARK_PENDING = 'BOOKMARK_PENDING';
+export const BOOKMARK_LOGOUT = 'BOOKMARK_LOGOUT';
