@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import { Modal, ModalBody, ModalFooter, Button } from 'reactstrap';
 
 class PopupModal extends Component {
     constructor({ showModal }) {
@@ -27,16 +27,16 @@ class PopupModal extends Component {
         return (
             <div id="myModal">
                 <Modal isOpen={this.state.showModal} toggle={this.toggle}>
-                    <ModalHeader>
+                    <p>
+                        <span style={styleHeading}>All Notifications</span>
                         <Button
                             onClick={this.toggle}
                             id="closeModalBtn"
-                            className="btn btn-dark btn-small"
+                            className="btn-dark btn-sm float-sm-right"
                         >
                             x
                         </Button>
-                        <span style={styleHeading}>All Notifications</span>
-                    </ModalHeader>
+                    </p>
                     <ModalBody className="text-centered">
                         <ul style={styleList}>
                             {getNotificationComponents(notifications)}

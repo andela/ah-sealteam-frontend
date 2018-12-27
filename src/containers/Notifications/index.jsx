@@ -8,7 +8,6 @@ import './notifications.scss';
 import 'font-awesome/css/font-awesome.min.css';
 import { isAuthenticated } from '../../services';
 import PopupModal from './Modal';
-
 class Notifications extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +37,7 @@ class Notifications extends Component {
                 return 'Posted a new Article';
             case 'comment_created':
                 return 'Posted a comment';
-            case 'article_rating':
+            case 'article_rateds':
                 return 'Rated your article';
             default:
                 return 'You have a new notification';
