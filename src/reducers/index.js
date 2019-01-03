@@ -7,7 +7,7 @@ import resetPasswordReducer from './resetPasswordReducer';
 import BookMarkArticleReducer from './bookmark.reducer';
 import allArticles from './ViewArticlesReducer';
 import userInfo from './ProfileReducer';
-
+import likeDislike from './likeDislikeReducer';
 import notificationsReducer from './notificationsReducer';
 export default combineReducers({
     social: SocialAuthReducer,
@@ -18,5 +18,6 @@ export default combineReducers({
     notificationsReducer,
     userInfo,
     bookmarks: BookMarkArticleReducer,
-    articleCRD
+    articleCRD,
+    likeDislike
 });

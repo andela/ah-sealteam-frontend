@@ -8,6 +8,22 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+/* Like Dislike */
+.fa.fa-thumbs-o-up:hover{
+    font-size:1.5em;
+}
+.fa.fa-thumbs-o-up:active{
+    font-size:1.8em;
+}
+
+.fa.fa-thumbs-o-down:hover{
+    font-size:1.5em;
+}
+.fa.fa-thumbs-o-down:active{
+    font-size:1.8em;
+}
+
 /* Pagination */
 
 .pagination>li>a {
