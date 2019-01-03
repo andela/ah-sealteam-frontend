@@ -8,3 +8,9 @@ export const FB_LOGIN_URL = `${
     process.env.REACT_APP_DOMAIN
 }/api/social-login/facebook/`;
 export const USER_LOGTOKEN = process.env.REACT_APP_FF_USER_TOKEN;
+export const BOOKMARK_FETCH_URL =
+    process.env.REACT_APP_DOMAIN + '/api/articles/bookmarks/';
+
+export const RATINGS_URL = `${
+    process.env.REACT_APP_DOMAIN
+}/api/articles/react/rate`;

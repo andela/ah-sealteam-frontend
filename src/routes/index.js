@@ -9,8 +9,9 @@ import ViewArticles from '../containers/Articles/ViewArticles';
 import ErrorHandler from '../components/ErrorHandler';
 import LogoutView from '../containers/Logout';
 import ResetPassword from '../containers/ResetPassword';
-import { PrivateRoute } from './protectedRoutes';
 import NavBar from '../containers/NavBar';
+import PrivateRoute from './protectedRoutes';
+import ArticleRatings from '../containers/Ratings';
 
 const AppRoutes = () => {
     return (
@@ -37,6 +38,11 @@ const AppRoutes = () => {
                             exact
                             path="/profile"
                             component={Profile}
+                        />
+                        <Route
+                            exact
+                            path="/article/"
+                            component={ArticleRatings}
                         />
                     </Switch>
                 </div>

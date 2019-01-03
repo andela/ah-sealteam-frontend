@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { IsAuthenticated } from '../services';
-export const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
         render={props =>
@@ -18,3 +18,4 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
         }
     />
 );
+export default PrivateRoute;

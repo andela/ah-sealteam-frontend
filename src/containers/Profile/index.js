@@ -7,6 +7,7 @@ import ProfileUpdate from './ProfileUpdate';
 import { bindActionCreators } from 'redux';
 import Loader from '../../components/Profile';
 import uploadToCloudinary from '../../utils/cloudinary';
+import BookMark from '../BookMark';
 
 class Profile extends Component {
     state = {
@@ -230,6 +231,7 @@ class Profile extends Component {
                         {/* {Profile details End} */}
                     </div>
                 </div>
+                <BookMark />
             </React.Fragment>
         );
         return <div>{fetching && !fetched ? <Loader /> : info}</div>;
