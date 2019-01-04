@@ -6,11 +6,15 @@ import { Router } from 'react-router-dom';
 import { history } from '../history';
 import SignIn from '../containers/Signin';
 import ViewArticles from '../containers/Articles/ViewArticles';
+import Create from '../containers/Article/Create';
+import Read from '../containers/Article/Read';
 import ErrorHandler from '../components/ErrorHandler';
 import LogoutView from '../containers/Logout';
 import ResetPassword from '../containers/ResetPassword';
 import NavBar from '../containers/NavBar';
 import PrivateRoute from './protectedRoutes';
+import Update from '../containers/Article/Update';
+import NotFound from '../components/NotFound';
 
 const AppRoutes = () => {
     return (
@@ -35,9 +39,21 @@ const AppRoutes = () => {
                         />
                         <PrivateRoute
                             exact
+                            path="/articles/create"
+                            component={Create}
+                        />
+                        <Route exact path="/articles/:slug" component={Read} />
+                        <PrivateRoute
+                            exact
                             path="/profile"
                             component={Profile}
                         />
+                        <PrivateRoute
+                            exact
+                            path="/articles/:slug/update"
+                            component={Update}
+                        />
+                        <Route exact path="/not_found" component={NotFound} />
                     </Switch>
                 </div>
             </Router>

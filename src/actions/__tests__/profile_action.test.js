@@ -45,7 +45,7 @@ describe('actions test', () => {
     });
 });
 
-describe('async actions', () => {
+describe('FETCH_USER_INFO action test', () => {
     afterEach(() => {
         fetchMock.restore();
     });
