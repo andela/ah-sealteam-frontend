@@ -1,5 +1,4 @@
 import React from 'react';
-import image from '../../assets/images/andela.png';
 
 const latestarticles = ({
     image,
@@ -11,7 +10,7 @@ const latestarticles = ({
 }) => {
     return (
         <div className="col-xs-6 col-sm-6 col-lg-3 Card">
-            <div className="card-header ">{tags}</div>
+            <div className="card-header ">{title.slice(0, 30) + '...'}</div>
             <div className="flip-box">
                 <div className="flip-box-inner">
                     <div className="flip-box-front">
