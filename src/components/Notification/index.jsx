@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import hdate from 'human-date';
 
 const Notification = ({ actor, timestamp, description, id, data }) => {
     return (
@@ -11,7 +12,9 @@ const Notification = ({ actor, timestamp, description, id, data }) => {
                             {description}
                         </a>
                     </div>
-                    <small className="text-warning">{Date(timestamp)}</small>
+                    <small className="text-warning">
+                        {hdate.relativeTime(timestamp)}
+                    </small>
                 </div>
             </li>
             <hr />

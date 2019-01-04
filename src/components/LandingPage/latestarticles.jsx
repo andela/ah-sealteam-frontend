@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../../assets/images/andela.png';
+// import image from '../../assets/images/andela.png';
 
 const latestarticles = ({
     image,
