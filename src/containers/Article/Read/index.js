@@ -7,6 +7,7 @@ import { dateTimeParser } from '../../../utils/datetime';
 import './index.css';
 import * as jwt from 'jsonwebtoken';
 import { IsAuthenticated } from '../../../services';
+import LikeDislike from '../../../components/LikeDislike';
 import swal from 'sweetalert';
 
 class Read extends Component {
@@ -77,7 +78,9 @@ class Read extends Component {
                             </figure>
                             <hr />
                             <div className="row">
-                                <div className="col-md-3">Likes & ratings</div>
+                                <div className="col-md-3">
+                                    {/* <h5>Likes & ratings</h5> */}
+                                </div>
                                 <div className="col-md-9">
                                     <p>{article.description}</p>
                                     <div
@@ -86,6 +89,17 @@ class Read extends Component {
                                         }}
                                     />
                                     <div className="article-items">
+                                        <LikeDislike
+                                            initlikeCount={
+                                                article.votes.like_count
+                                            }
+                                            initdislikeCount={
+                                                article.votes.dislike_count
+                                            }
+                                        />
+
+                                        <br />
+
                                         {article.tags
                                             ? article.tags.map(tag => (
                                                   <span
@@ -97,6 +111,7 @@ class Read extends Component {
                                               ))
                                             : ''}
                                     </div>
+
                                     <div
                                         className={`article-items pull-right ${
                                             author !== user.username
