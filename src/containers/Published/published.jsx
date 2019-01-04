@@ -2,10 +2,16 @@ import React from 'react';
 import hdate from 'human-date';
 import 'bootstrap';
 import { Link } from 'react-router-dom';
-
-const BookMarkComp = (article, i) => {
-    const article_url = `/articles/${article.article.article_slug}`;
-    const user_url = `/profiles/${article.article.article_author}`;
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './publish.scss';
+const PublishedComp = (article, i) => {
+    const article_url = `/articles/${article.article.slug}`;
+    const title = `Read ${
+        article.article.reads.no_read
+    } times. Last read was ${hdate.relativeTime(
+        article.article.reads.read_last_at
+    )}`;
+    console.log(article);
     return (
         <div key={i}>
             <div className="row">
@@ -23,22 +29,25 @@ const BookMarkComp = (article, i) => {
                 </div>
                 <div className="col-lg-7 col-xl-8">
                     <h3 className="font-weight-bold mb-3">
-                        <strong>{article.article.article_title}</strong>
+                        <strong>{article.article.title}</strong>
                         <i
                             className="fa fa-bookmark article-icon"
                             aria-hidden="true"
                         />
                     </h3>
                     <p className="dark-grey-text">
-                        {article.article.article_description}
+                        {article.article.description}
                     </p>
-                    <p>
-                        by{' '}
-                        <Link to={user_url} className="font-weight-bold">
-                            {article.article.article_author}
-                        </Link>
-                        , {hdate.relativeTime(article.article.created_at)}
-                    </p>
+                    <p>by {hdate.relativeTime(article.article.createdAt)}</p>
+                    <div className="float-left popup" data-popuptext={title}>
+                        <FontAwesomeIcon
+                            icon="eye"
+                            className=" mr-1 text-primary"
+                        />
+                        <p className="d-inline text-primary ">
+                            {article.article.reads.no_read}
+                        </p>
+                    </div>
                     <Link
                         to={article_url}
                         className="btn btn-rounded article-button"
@@ -52,4 +61,4 @@ const BookMarkComp = (article, i) => {
     );
 };
 
-export default BookMarkComp;
+export default PublishedComp;

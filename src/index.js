@@ -8,9 +8,9 @@ import { Provider } from 'react-redux';
 import store from './store';
 import AppRoutes from './routes';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faIgloo, faBell } from '@fortawesome/free-solid-svg-icons';
+import { faIgloo, faBell, fas } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faIgloo, faBell);
+library.add(faIgloo, faBell, fas);
 ReactDOM.render(
     <Provider store={store}>
         <AppRoutes />

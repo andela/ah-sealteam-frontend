@@ -6,9 +6,9 @@ import '../Profile/index.css';
 import ProfileUpdate from './ProfileUpdate';
 import { bindActionCreators } from 'redux';
 import uploadToCloudinary from '../../utils/cloudinary';
-import BookMark from '../BookMark';
 import Loader from 'react-dots-loader';
 import 'react-dots-loader/index.css';
+import Tabs from '../../components/BookMarkComponent/tabs';
 
 class Profile extends Component {
     state = {
@@ -232,7 +232,7 @@ class Profile extends Component {
                         {/* {Profile details End} */}
                     </div>
                 </div>
-                <BookMark />
+                <Tabs />
             </React.Fragment>
         );
         return (
