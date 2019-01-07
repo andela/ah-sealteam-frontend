@@ -8,6 +8,13 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe('actions test', () => {
+    it('Should create an action to initiate fetching of user info', () => {
+        const expectedAction = {
+            type: types.FETCH_USER_INFO
+        };
+        expect(actions.fetchUserInfo()).toEqual(expectedAction);
+    });
+
     it('Should create ac action to successfully fetch user info', () => {
         const result = 'this is a mock result';
         const expectedAction = {
@@ -24,6 +31,13 @@ describe('actions test', () => {
             error
         };
         expect(actions.fetchUserInfoFailure(error)).toEqual(expectedAction);
+    });
+
+    it('Should create an action to initiate updating of user info', () => {
+        const expectedAction = {
+            type: types.UPDATE_PROFILE
+        };
+        expect(actions.updateProfile()).toEqual(expectedAction);
     });
 
     it('Should create an action to successfully update user info', () => {

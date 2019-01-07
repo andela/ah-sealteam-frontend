@@ -19,21 +19,6 @@ export const createArticleFailure = errors => ({
     errors
 });
 
-//Rate Article
-export const rateArticle = () => ({
-    type: types.RATE_ARTICLE
-});
-
-export const rateArticleSuccess = result => ({
-    type: types.RATE_ARTICLE_SUCCESS,
-    result
-});
-
-export const rateArticleFailure = errors => ({
-    type: types.RATE_ARTICLE_FAILURE,
-    errors
-});
-
 //Get Article
 export const getArticle = () => ({
     type: types.GET_ARTICLE
@@ -117,16 +102,4 @@ export const removeArticle = slug => {
         })
         .then(response => response.data)
         .catch(err => err.response);
-};
-
-export const rateArticles = (slug, data) => dispatch => {
-    axios
-        .post(`${types.BASE_URL}articles/${slug}/rate`, data, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => dispatch(rateArticleSuccess(response.data)))
-        .catch(err => dispatch(rateArticleFailure(err.response)));
 };

@@ -1,7 +1,6 @@
 import React from 'react';
-import image from '../../assets/images/andela.png';
 
-const latestarticles = ({ title, tags, read_time, description }) => {
+const latestarticles = ({ title, tags, read_time, description, image }) => {
     return (
         <div className="col-xs-6 col-sm-6 col-lg-3 Card">
             <div className="card-header ">{tags}</div>

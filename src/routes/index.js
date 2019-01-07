@@ -11,10 +11,11 @@ import Read from '../containers/Article/Read';
 import ErrorHandler from '../components/ErrorHandler';
 import LogoutView from '../containers/Logout';
 import ResetPassword from '../containers/ResetPassword';
-import { PrivateRoute } from './protectedRoutes';
 import NavBar from '../containers/NavBar';
 import Update from '../containers/Article/Update';
 import NotFound from '../components/NotFound';
+import PrivateRoute from './protectedRoutes';
+import ArticleRatings from '../containers/Ratings';
 
 const AppRoutes = () => {
     return (
@@ -54,6 +55,11 @@ const AppRoutes = () => {
                             component={Update}
                         />
                         <Route exact path="/not_found" component={NotFound} />
+                        <Route
+                            exact
+                            path="/article/"
+                            component={ArticleRatings}
+                        />
                     </Switch>
                 </div>
             </Router>

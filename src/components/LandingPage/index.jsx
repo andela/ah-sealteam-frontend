@@ -29,6 +29,7 @@ const LandingPage = props => {
                                           tags={item.tags}
                                           description={item.description}
                                           read_time={item.read_time}
+                                          image={item.image}
                                       />
                                   ))
                             : ''}

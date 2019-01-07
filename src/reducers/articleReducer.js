@@ -37,12 +37,6 @@ function articleCRD(state = initialState, action) {
                 updated: false,
                 errors: action.errors
             };
-        case types.RATE_ARTICLE:
-            return { ...state, rating: true };
-        case types.RATE_ARTICLE_SUCCESS:
-            return { ...state, rated: true, data: action.result };
-        case types.RATE_ARTICLE_FAILURE:
-            return { ...state, rated: false, errors: action.errors };
         default:
             return state;
     }

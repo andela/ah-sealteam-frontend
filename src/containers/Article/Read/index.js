@@ -8,7 +8,8 @@ import './index.css';
 import * as jwt from 'jsonwebtoken';
 import { IsAuthenticated } from '../../../services';
 import swal from 'sweetalert';
-import RateArticles from '../Rate';
+import StarRatings from 'react-star-ratings';
+import ArticleRating from '../../Ratings';
 
 class Read extends Component {
     componentWillMount() {
@@ -63,6 +64,14 @@ class Read extends Component {
                         <div className="col-xs-12">
                             <h1 className="mt-4 title">{article.title}</h1>
                             <p>{article.read_time} </p>
+                            <div className="ml-3 float-right">
+                                <StarRatings
+                                    rating={article.votes.sum_rating}
+                                    starDimension="30px"
+                                    starSpacing="1px"
+                                />
+                            </div>
+
                             <p className="lead">
                                 <small>
                                     Posted by <Link to="#">{author}</Link> on{' '}
@@ -79,7 +88,7 @@ class Read extends Component {
                             <hr />
                             <div className="row">
                                 <div className="col-md-3">
-                                    <RateArticles slug={article.slug} />
+                                    <ArticleRating slug={article.slug} />
                                 </div>
                                 <div className="col-md-9">
                                     <p>{article.description}</p>
@@ -141,6 +150,7 @@ class Read extends Component {
 }
 
 const mapStateToProps = state => ({
-    article: state.articleCRD
+    article: state.articleCRD,
+    ratings: state.ratingsReducer
 });
 export default connect(mapStateToProps)(Read);
